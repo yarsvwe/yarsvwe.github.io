@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои приложения | Портфолио разработчика</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #0d1b3a 0%, #1a237e 50%, #283593 100%);
+        }
+        
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .download-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #ffffff;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-code text-2xl"></i>
+                    <h1 class="text-2xl font-bold">DevPortfolio</h1>
+                </div>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="nav-link">Главная</a>
+                    <a href="#apps" class="nav-link">Мои приложения</a>
+                    <a href="#about" class="nav-link">Обо мне</a>
+                    <a href="#contact" class="nav-link">Контакты</a>
+                    <div class="flex space-x-2 ml-4">
+                        <button class="lang-btn px-2 py-1 rounded hover:bg-blue-800" data-lang="ru">RU</button>
+                        <button class="lang-btn px-2 py-1 rounded hover:bg-blue-800" data-lang="en">EN</button>
+                        <button class="lang-btn px-2 py-1 rounded hover:bg-blue-800" data-lang="uk">UK</button>
+                    </div>
+                </nav>
+                <button class="md:hidden text-xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 fade-in">Мои приложения</h1>
+            <p class="text-xl md:text-2xl max-w-3xl mx-auto mb-8 fade-in" style="animation-delay: 0.2s;">
+                Инновационные решения для ваших задач. Качество, удобство и стиль в каждом приложении.
+            </p>
+            <a href="#apps" class="inline-block bg-white text-indigo-600 font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition duration-300 fade-in" style="animation-delay: 0.4s;">
+                Посмотреть работы <i class="fas fa-arrow-down ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Apps Section -->
+    <section id="apps" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Мои приложения</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Exolute Converter -->
+                <div class="app-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300 hover:shadow-xl border border-gray-100">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-exchange-alt text-6xl text-blue-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Exolute Converter</h3>
+                        <p class="text-gray-600 mb-4">
+                            Ultimate currency converter with real-time exchange rates and conversion history.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Finance</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Android</span>
+                        </div>
+                        <a href="https://play.google.com/store/apps/details?id=com.saieesoft.exolute&pcampaignid=web_share" target="_blank" class="download-btn inline-block w-full bg-blue-600 hover:bg-blue-700 text-white text-center font-medium py-2 px-4 rounded-lg transition duration-300">
+                            <i class="fas fa-download mr-2"></i> Download on Play Store
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Daily.box -->
+                <div class="app-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300 hover:shadow-xl border border-gray-100">
+                    <div class="h-48 bg-purple-100 flex items-center justify-center">
+                        <i class="fas fa-tasks text-6xl text-purple-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Daily.box</h3>
+                        <p class="text-gray-600 mb-4">
+                            Your daily progress companion for building habits and achieving goals.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Productivity</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Android</span>
+                        </div>
+                        <a href="#" class="download-btn inline-block w-full bg-purple-600 hover:bg-purple-700 text-white text-center font-medium py-2 px-4 rounded-lg transition duration-300">
+                            <i class="fas fa-download mr-2"></i> Download (Beta)
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- App 3 -->
+                <div class="app-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300 hover:shadow-xl border border-gray-100">
+                    <div class="h-48 bg-yellow-100 flex items-center justify-center">
+                        <i class="fas fa-calendar-alt text-6xl text-yellow-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Календарь</h3>
+                        <p class="text-gray-600 mb-4">
+                            Простой календарь с возможностью добавления заметок.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">Органайзер</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Windows</span>
+                        </div>
+                        <a href="#" class="download-btn inline-block w-full bg-yellow-600 hover:bg-yellow-700 text-white text-center font-medium py-2 px-4 rounded-lg transition duration-300">
+                            <i class="fas fa-download mr-2"></i> Скачать (3.5 MB)
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- App 4 -->
+                <div class="app-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300 hover:shadow-xl border border-gray-100">
+                    <div class="h-48 bg-green-100 flex items-center justify-center">
+                        <i class="fas fa-running text-6xl text-green-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">FitLife Companion</h3>
+                        <p class="text-gray-600 mb-4">
+                            Персональный тренер в вашем телефоне. Трекинг активности, планы тренировок и питание.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Здоровье</span>
+                            <span class="bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded">Wear OS</span>
+                        </div>
+                        <a href="#" class="download-btn inline-block w-full bg-green-600 hover:bg-green-700 text-white text-center font-medium py-2 px-4 rounded-lg transition duration-300">
+                            <i class="fas fa-download mr-2"></i> Скачать (19.3 MB)
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- App 5 -->
+                <div class="app-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300 hover:shadow-xl border border-gray-100">
+                    <div class="h-48 bg-red-100 flex items-center justify-center">
+                        <i class="fas fa-book-open text-6xl text-red-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-gray-800">ReadEase</h3>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Бестселлер</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Электронная читалка с поддержкой всех форматов, синхронизацией закладок и ночным режимом.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">Книги</span>
+                            <span class="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded">Кроссплатформа</span>
+                        </div>
+                        <a href="#" class="download-btn inline-block w-full bg-red-600 hover:bg-red-700 text-white text-center font-medium py-2 px-4 rounded-lg transition duration-300">
+                            <i class="fas fa-download mr-2"></i> Скачать (23.5 MB)
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- App 6 -->
+                <div class="app-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300 hover:shadow-xl border border-gray-100">
+                    <div class="h-48 bg-yellow-100 flex items-center justify-center">
+                        <i class="fas fa-cloud-sun text-6xl text-yellow-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">WeatherSense</h3>
+                        <p class="text-gray-600 mb-4">
+                            Точный прогноз погоды с красивыми визуализациями, предупреждениями и радаром осадков.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">Погода</span>
+                            <span class="bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded">Виджет</span>
+                        </div>
+                        <a href="#" class="download-btn inline-block w-full bg-yellow-600 hover:bg-yellow-700 text-white text-center font-medium py-2 px-4 rounded-lg transition duration-300">
+                            <i class="fas fa-download mr-2"></i> Скачать (11.8 MB)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Обо мне</h2>
+                <div class="bg-white rounded-xl shadow-md p-8 md:p-10">
+                    <div class="flex flex-col md:flex-row items-center mb-8">
+                        <div class="w-32 h-32 rounded-full bg-indigo-100 flex items-center justify-center mb-6 md:mb-0 md:mr-8">
+                            <i class="fas fa-user-tie text-5xl text-indigo-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">Алексей Петров</h3>
+                            <p class="text-indigo-600 font-medium">Full-stack разработчик</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        Я создаю современные, удобные и красивые приложения уже более 7 лет. Моя страсть — превращать сложные идеи в простые и элегантные решения, которые действительно помогают людям.
+                    </p>
+                    <p class="text-gray-600 mb-6">
+                        В каждом своем проекте я уделяю внимание не только функциональности, но и пользовательскому опыту, чтобы приложения были не только полезными, но и приятными в использовании.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>50+ успешных проектов</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>15 довольных клиентов</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>500K+ загрузок</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Связаться со мной</h2>
+            <div class="max-w-2xl mx-auto bg-gray-50 rounded-xl shadow-md p-8">
+                <form>
+                    <div class="mb-6">
+                        <label for="name" class="block text-gray-700 font-medium mb-2">Ваше имя</label>
+                        <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    </div>
+                    <div class="mb-6">
+                        <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                        <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-700 font-medium mb-2">Сообщение</label>
+                        <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-4 rounded-lg transition duration-300">
+                        Отправить сообщение <i class="fas fa-paper-plane ml-2"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-code text-2xl text-indigo-400"></i>
+                        <h2 class="text-2xl font-bold">DevPortfolio</h2>
+                    </div>
+                    <p class="text-gray-400 mt-2">Создаем цифровые решения будущего</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-github text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-telegram text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-linkedin text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-twitter text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 DevPortfolio. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language switching
+        const translations = {
+            en: {
+                title: "My Apps",
+                slogan: "Innovative solutions for your needs. Quality, convenience and style in every app.",
+                viewWorks: "View Works",
+                appsTitle: "My Applications",
+                aboutTitle: "About Me",
+                contactTitle: "Contact Me"
+            },
+            ru: {
+                title: "Мои приложения",
+                slogan: "Инновационные решения для ваших задач. Качество, удобство и стиль в каждом приложении.",
+                viewWorks: "Посмотреть работы",
+                appsTitle: "Мои приложения",
+                aboutTitle: "Обо мне",
+                contactTitle: "Контакты"
+            },
+            uk: {
+                title: "Мої додатки",
+                slogan: "Інноваційні рішення для ваших потреб. Якість, зручність і стиль у кожному додатку.",
+                viewWorks: "Переглянути роботи",
+                appsTitle: "Мої додатки",
+                aboutTitle: "Про мене",
+                contactTitle: "Контакти"
+            }
+        };
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                const t = translations[lang];
+                
+                // Update page content
+                document.querySelector('title').textContent = t.title + " | Developer Portfolio";
+                document.querySelector('.hero h1').textContent = t.title;
+                document.querySelector('.hero p').textContent = t.slogan;
+                document.querySelector('.hero a').innerHTML = t.viewWorks + ' <i class="fas fa-arrow-down ml-2"></i>';
+                document.querySelector('#apps h2').textContent = t.appsTitle;
+                document.querySelector('#about h2').textContent = t.aboutTitle;
+                document.querySelector('#contact h2').textContent = t.contactTitle;
+                
+                // Update active language button style
+                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('bg-blue-800'));
+                this.classList.add('bg-blue-800');
+            });
+        });
+
+        // Simple animation trigger
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            fadeElements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.opacity = 1;
+                    el.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

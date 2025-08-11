@@ -292,7 +292,13 @@
         .dark .text-indigo-500 { color: #a5b4fc !important; }
         .dark .from-indigo-100 { --tw-gradient-from: #312e81 !important; }
         .dark .to-indigo-200 { --tw-gradient-to: #3730a3 !important; }
-        .dark #theme-toggle .fa-cog{ transform: rotate(180deg); }
+        
+        /* Theme Icon Toggle */
+        .theme-icon-dark { display: none; }
+        .theme-icon-light { display: block; }
+        .dark .theme-icon-light { display: none; }
+        .dark .theme-icon-dark { display: block; }
+
     </style>
 </head>
 <body class="relative">
@@ -316,8 +322,9 @@
                     <a href="#apps" class="nav-link" data-translate="apps">My Apps</a>
                     <a href="#about" class="nav-link" data-translate="about">About Me</a>
                     <a href="#contact" class="nav-link" data-translate="contact">Contact</a>
-                    <button id="theme-toggle" class="text-white text-xl p-2 rounded-full hover:bg-black/20">
-                        <i class="fas fa-cog transition-transform duration-500 ease-in-out"></i>
+                    <button id="theme-toggle" class="text-white text-xl p-2 rounded-full hover:bg-black/20 transition-transform duration-300 hover:scale-110">
+                        <i class="fas fa-moon theme-icon-dark"></i>
+                        <i class="fas fa-sun theme-icon-light"></i>
                     </button>
                     <div class="flex space-x-2">
                         <button class="lang-btn px-3 py-1 rounded-md hover:bg-indigo-500 transition" data-lang="en">EN</button>
@@ -339,7 +346,11 @@
                     <a href="#about" class="nav-link block" data-translate="about">About Me</a>
                     <a href="#contact" class="nav-link block" data-translate="contact">Contact</a>
                     <button id="theme-toggle-mobile" class="text-left w-full py-2 nav-link flex items-center text-white opacity-90">
-                       <i class="fas fa-cog w-6 mr-2"></i> <span data-translate="toggleTheme">Change Theme</span>
+                       <div class="w-6 mr-2 text-center">
+                         <i class="fas fa-moon theme-icon-dark"></i>
+                         <i class="fas fa-sun theme-icon-light"></i>
+                       </div>
+                       <span data-translate="toggleTheme">Change Theme</span>
                     </button>
                     <div class="flex space-x-2 pt-2">
                         <button class="lang-btn px-3 py-1 rounded-md hover:bg-indigo-500 transition" data-lang="en">EN</button>
@@ -1023,8 +1034,7 @@
         });
 
         // Theme Switcher
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        const themeToggleButtons = document.querySelectorAll('#theme-toggle, #theme-toggle-mobile');
         const body = document.body;
 
         const applyTheme = (theme) => {
@@ -1041,8 +1051,9 @@
             applyTheme(newTheme);
         };
 
-        themeToggle.addEventListener('click', toggleTheme);
-        themeToggleMobile.addEventListener('click', toggleTheme);
+        themeToggleButtons.forEach(btn => {
+            btn.addEventListener('click', toggleTheme);
+        });
 
 
         // Form submission

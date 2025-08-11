@@ -1,1 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Projects | Developer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        body.dark {
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        
+        .dark .gradient-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #0d1b3a 0%, #1a237e 50%, #283593 100%);
+        }
+        
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .download-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #ffffff;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
 
+        /* Dark mode card styles */
+        .dark .app-card {
+            background-color: #1e293b;
+            border-color: #334155;
+        }
+
+        .dark .app-card h3,
+        .dark .app-card p {
+            color: #f8fafc;
+        }
+
+        .dark .app-card .bg-gray-100 {
+            background-color: #334155;
+            color: #f8fafc;
+        }
+
+        /* Dark mode contact section */
+        .dark #contact {
+            background-color: #1e293b;
+        }
+
+        .dark #contact input,
+        .dark #contact textarea {
+            background-color: #334155;
+            border-color: #475569;
+            color: #f8fafc;
+        }
+
+        .dark #contact label {
+            color: #f8fafc;
+        }
+
+        /* Dark mode footer */
+        .dark footer {
+            background-color: #0f172a;
+        }
+
+        .dark footer .text-gray-400 {
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+    <header class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-code text-2xl"></i>
+                    <h1 class="text-2xl font-bold">DevPortfolio</h1>
+                </div>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="nav-link" data-translate="home">Home</a>
+                    <a href="#apps" class="nav-link" data-translate="apps">My Apps</a>
+                    <a href="#contact" class="nav-link" data-translate="contact">Contact</a>
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-blue-800 transition">
+                        <i class="fas fa-moon" id="theme-icon"></i>
+                    </button>
+                    <div class="flex space-x-2 ml-4">
+                        <button class="lang-btn px-2 py-1 rounded hover:bg-blue-800 bg-blue-800" data-lang="en">EN</button>
+                        <button class="lang-btn px-2 py-1 rounded hover:bg-blue-800" data-lang="ru">RU</button>
+                        <button class="lang-btn px-2 py-1 rounded hover:bg-blue-800" data-lang="uk">UK</button>
+                    </div>
+                </nav>
+                <button class="md:hidden text-xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="gradient-bg text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 fade-in" data-translate="title">All Projects</h1>
+            <p class="text-xl md:text-2xl max-w-3xl mx-auto mb-8 fade-in" style="animation-delay: 0.2s;" data-translate="slogan">
+                Complete collection of my development projects including web apps, mobile apps and games.
+            </p>
+            <a href="#apps" class="inline-block bg-white text-indigo-600 font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition duration-300 fade-in" style="animation-delay: 0.4s;" data-translate="viewWorks">
+                View Projects <i class="fas fa-arrow-down ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <section id="apps" class="py-16 bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white" data-translate="appsTitle">Featured Projects</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="app-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md transition duration-300 hover:shadow-xl border border-gray-100 dark:border-gray-700">
+                    <div class="h-48 bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
+                        <i class="fas fa-exchange-alt text-6xl text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">Exolute Converter</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            Ultimate currency converter with real-time exchange rates and conversion history.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">Finance</span>
+                            <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs px-2 py-1 rounded">Android</span>
+                        </div>
+                        <a href="https://play.google.com/store/apps/details?id=com.saieesoft.exolute&pcampaignid=web_share" target="_blank" class="download-btn inline-block w-full bg-blue-600 hover:bg-blue-700 text-white text-center font-medium py-2 px-4 rounded-lg transition duration-300">
+                            <i class="fas fa-download mr-2"></i> Download on Play Store
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="app-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md transition duration-300 hover:shadow-xl border border-gray-100 dark:border-gray-700">
+                    <div class="h-48 bg-purple-100 dark:bg-purple-900 flex items-center justify-center">
+                        <i class="fas fa-tasks text-6xl text-purple-600 dark:text-purple-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">Daily.box</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            Your daily progress companion for building habits and achieving goals.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs px-2 py-1 rounded">Productivity</span>
+                            <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs px-2 py-1 rounded">Android</span>
+                        </div>
+                        <a href="https://play.google.com/apps/testing/com.saieesoft.dailybox" target="_blank" class="download-btn inline-block w-full bg-purple-600 hover:bg-purple-700 text-white text-center font-medium py-2 px-4 rounded-lg transition duration-300">
+                            <i class="fas fa-download mr-2"></i> Download (Beta)
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="app-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md transition duration-300 hover:shadow-xl border border-gray-100 dark:border-gray-700">
+                    <div class="h-48 bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center">
+                        <i class="fas fa-brain text-6xl text-indigo-600 dark:text-indigo-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">Memory Cards</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            Interactive flashcard app for effective learning with spaced repetition algorithm.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 text-xs px-2 py-1 rounded">Education</span>
+                            <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs px-2 py-1 rounded">Android</span>
+                            <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs px-2 py-1 rounded">Web App</span>
+                        </div>
+                        <a href="https://www.mediafire.com/file/clz7vj6zlia6d8n/MemoryCards+v1.5.apk/file" target="_blank" class="download-btn inline-block w-full bg-indigo-600 hover:bg-indigo-700 text-white text-center font-medium py-2 px-4 rounded-lg transition duration-300">
+                            <i class="fas fa-download mr-2"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="app-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md transition duration-300 hover:shadow-xl border border-gray-100 dark:border-gray-700">
+                    <div class="h-48 bg-pink-100 dark:bg-pink-900 flex items-center justify-center">
+                        <i class="fab fa-telegram text-6xl text-pink-600 dark:text-pink-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">@AskAnonymousBot</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            Telegram bot for exchanging anonymous messages with friends and communities.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 text-xs px-2 py-1 rounded">Social</span>
+                            <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs px-2 py-1 rounded">Telegram</span>
+                            <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">Privacy</span>
+                        </div>
+                        <a href="https://t.me/AskAnonymousBot" target="_blank" class="download-btn inline-block w-full bg-pink-600 hover:bg-pink-700 text-white text-center font-medium py-2 px-4 rounded-lg transition duration-300">
+                            <i class="fab fa-telegram mr-2"></i> Try the Bot
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-16 bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white" data-translate="contactTitle">Contact Me</h2>
+            <div class="max-w-2xl mx-auto bg-white dark:bg-gray-700 rounded-xl shadow-md p-8">
+                <form>
+                    <div class="mb-6">
+                        <label for="name" class="block text-gray-700 dark:text-gray-300 font-medium mb-2" data-translate="yourName">Your Name</label>
+                        <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white dark:bg-gray-800 dark:text-white">
+                    </div>
+                    <div class="mb-6">
+                        <label for="email" class="block text-gray-700 dark:text-gray-300 font-medium mb-2">Email</label>
+                        <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white dark:bg-gray-800 dark:text-white">
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-700 dark:text-gray-300 font-medium mb-2" data-translate="message">Message</label>
+                        <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white dark:bg-gray-800 dark:text-white"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-4 rounded-lg transition duration-300" data-translate="sendMessage">
+                        Send Message <i class="fas fa-paper-plane ml-2"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-code text-2xl text-indigo-400"></i>
+                        <h2 class="text-2xl font-bold">DevPortfolio</h2>
+                    </div>
+                    <p class="text-gray-400 mt-2">Creating digital solutions for the future</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-github text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-telegram text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-linkedin text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-twitter text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 DevPortfolio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme switching
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+        // Check for saved theme or use preferred color scheme
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+            document.body.classList.add('dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark');
+            if (document.body.classList.contains('dark')) {
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Language switching
+        const translations = {
+            en: {
+                title: "All Projects",
+                slogan: "Complete collection of my development projects including web apps, mobile apps and games.",
+                viewWorks: "View Projects",
+                appsTitle: "Featured Projects",
+                contactTitle: "Contact Me",
+                home: "Home",
+                apps: "My Apps",
+                contact: "Contact",
+                yourName: "Your Name",
+                message: "Message",
+                sendMessage: "Send Message"
+            },
+            ru: {
+                title: "Все проекты",
+                slogan: "Полная коллекция моих проектов, включая веб-приложения, мобильные приложения и игры.",
+                viewWorks: "Посмотреть проекты",
+                appsTitle: "Избранные проекты",
+                contactTitle: "Контакты",
+                home: "Главная",
+                apps: "Мои приложения",
+                contact: "Контакты",
+                yourName: "Ваше имя",
+                message: "Сообщение",
+                sendMessage: "Отправить сообщение"
+            },
+            uk: {
+                title: "Всі проекти",
+                slogan: "Повна колекція моїх проектів, включаючи веб-додатки, мобільні додатки та ігри.",
+                viewWorks: "Переглянути проекти",
+                appsTitle: "Обрані проекти",
+                contactTitle: "Контакти",
+                home: "Головна",
+                apps: "Мої додатки",
+                contact: "Контакти",
+                yourName: "Ваше ім'я",
+                message: "Повідомлення",
+                sendMessage: "Надіслати повідомлення"
+            }
+        };
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                const t = translations[lang];
+                
+                // Update all elements with data-translate attribute
+                document.querySelectorAll('[data-translate]').forEach(el => {
+                    const key = el.getAttribute('data-translate');
+                    if (t[key]) {
+                        el.textContent = t[key];
+                    }
+                });
+                
+                // Update active language button style
+                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('bg-blue-800'));
+                this.classList.add('bg-blue-800');
+                
+                // Update HTML lang attribute
+                document.documentElement.lang = lang;
+            });
+        });
+
+        // Initialize with English language
+        document.querySelector('.lang-btn[data-lang="en"]').click();
+
+        // Simple animation trigger
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            fadeElements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.opacity = 1;
+                    el.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SaieeSoft | Devplace</title>
+    <title>SaieeSoft | Homepage</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -25,6 +25,7 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             text-rendering: optimizeLegibility;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         
         .gradient-bg {
@@ -245,6 +246,53 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
+
+        /* Dark Theme Styles */
+        body.dark {
+            --dark: #f8fafc;
+            --light: #1e293b;
+        }
+
+        .dark {
+            background-color: #1e293b;
+            color: #cbd5e1;
+        }
+        .dark .gradient-bg, .dark .bg-gray-900{
+            background: #1e293b;
+        }
+        .dark .bg-white { background-color: #334155; }
+        .dark .bg-gray-50 { background-color: #1a2638; }
+        .dark .stats-item.bg-gray-50 { background-color: #334155; }
+        .dark .text-gray-800 { color: #f1f5f9; }
+        .dark .text-gray-600 { color: #94a3b8; }
+        .dark .text-gray-500 { color: #a1a1aa; }
+        .dark .text-gray-400 { color: #94a3b8; }
+        .dark .border-gray-100 { border-color: #475569; }
+        .dark .border-gray-800 { border-color: #334155; }
+        .dark .hover\:border-indigo-200:hover { border-color: #a5b4fc; }
+        .dark .text-indigo-600, .dark .text-indigo-400 { color: #a5b4fc; }
+        .dark .bg-gradient-to-br.from-blue-50.to-blue-100 { background-image: linear-gradient(to bottom right, #1e3a8a, #1e40af); }
+        .dark .bg-gradient-to-br.from-purple-50.to-purple-100 { background-image: linear-gradient(to bottom right, #3b0764, #5b21b6); }
+        .dark .bg-gradient-to-br.from-pink-50.to-pink-100 { background-image: linear-gradient(to bottom right, #831843, #be185d); }
+        .dark .bg-blue-100 { background-color: #1e40af; color: #bfdbfe; }
+        .dark .text-blue-800 { color: #bfdbfe; }
+        .dark .bg-green-100 { background-color: #166534; color: #bbf7d0; }
+        .dark .text-green-800 { color: #bbf7d0; }
+        .dark .bg-purple-100 { background-color: #5b21b6; color: #e9d5ff; }
+        .dark .text-purple-800 { color: #e9d5ff; }
+        .dark .bg-yellow-100 { background-color: #854d0e; color: #fef08a; }
+        .dark .text-yellow-800 { color: #fef08a; }
+        .dark .bg-pink-100 { background-color: #9d174d; color: #fbcfe8; }
+        .dark .text-pink-800 { color: #fbcfe8; }
+        .dark .bg-gray-100 { background-color: #475569; color: #e2e8f0; }
+        .dark .tech-icon { filter: grayscale(0); opacity: 0.8; }
+        .dark .tech-icon.bg-white { background-color: #475569; }
+        .dark .social-icon:hover { color: #6366f1; }
+        .dark .bg-indigo-100 { background-color: #312e81 !important; }
+        .dark .text-indigo-500 { color: #a5b4fc !important; }
+        .dark .from-indigo-100 { --tw-gradient-from: #312e81 !important; }
+        .dark .to-indigo-200 { --tw-gradient-to: #3730a3 !important; }
+        .dark #theme-toggle .fa-cog{ transform: rotate(180deg); }
     </style>
 </head>
 <body class="relative">
@@ -263,15 +311,18 @@
                     <h1 class="text-2xl font-bold">Saiee<span class="gradient-text">Soft</span></h1>
                 </div>
                 
-                <nav class="hidden md:flex items-center space-x-8">
+                <nav class="hidden md:flex items-center space-x-6">
                     <a href="#" class="nav-link" data-translate="home">Home</a>
                     <a href="#apps" class="nav-link" data-translate="apps">My Apps</a>
                     <a href="#about" class="nav-link" data-translate="about">About Me</a>
                     <a href="#contact" class="nav-link" data-translate="contact">Contact</a>
-                    <div class="flex space-x-2 ml-4">
-                        <button class="lang-btn px-3 py-1 rounded-full hover:bg-indigo-700 bg-indigo-700 transition" data-lang="en">EN</button>
-                        <button class="lang-btn px-3 py-1 rounded-full hover:bg-indigo-700 transition" data-lang="ru">RU</button>
-                        <button class="lang-btn px-3 py-1 rounded-full hover:bg-indigo-700 transition" data-lang="ua">UA</button>
+                    <button id="theme-toggle" class="text-white text-xl p-2 rounded-full hover:bg-black/20">
+                        <i class="fas fa-cog transition-transform duration-500 ease-in-out"></i>
+                    </button>
+                    <div class="flex space-x-2">
+                        <button class="lang-btn px-3 py-1 rounded-md hover:bg-indigo-500 transition" data-lang="en">EN</button>
+                        <button class="lang-btn px-3 py-1 rounded-md hover:bg-indigo-500 transition" data-lang="ru">RU</button>
+                        <button class="lang-btn px-3 py-1 rounded-md hover:bg-indigo-500 transition" data-lang="ua">UA</button>
                     </div>
                 </nav>
                 
@@ -287,10 +338,13 @@
                     <a href="#apps" class="nav-link block" data-translate="apps">My Apps</a>
                     <a href="#about" class="nav-link block" data-translate="about">About Me</a>
                     <a href="#contact" class="nav-link block" data-translate="contact">Contact</a>
+                    <button id="theme-toggle-mobile" class="text-left w-full py-2 nav-link flex items-center text-white opacity-90">
+                       <i class="fas fa-cog w-6 mr-2"></i> <span data-translate="toggleTheme">Change Theme</span>
+                    </button>
                     <div class="flex space-x-2 pt-2">
-                        <button class="lang-btn px-3 py-1 rounded-full hover:bg-indigo-700 bg-indigo-700 transition" data-lang="en">EN</button>
-                        <button class="lang-btn px-3 py-1 rounded-full hover:bg-indigo-700 transition" data-lang="ru">RU</button>
-                        <button class="lang-btn px-3 py-1 rounded-full hover:bg-indigo-700 transition" data-lang="ua">UA</button>
+                        <button class="lang-btn px-3 py-1 rounded-md hover:bg-indigo-500 transition" data-lang="en">EN</button>
+                        <button class="lang-btn px-3 py-1 rounded-md hover:bg-indigo-500 transition" data-lang="ru">RU</button>
+                        <button class="lang-btn px-3 py-1 rounded-md hover:bg-indigo-500 transition" data-lang="ua">UA</button>
                     </div>
                 </div>
             </div>
@@ -324,7 +378,7 @@
     </section>
 
     <!-- Stats Section -->
-    <section class="py-12 bg-white">
+    <section class="py-12 bg-gray-50">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div class="stats-item bg-gray-50 rounded-xl p-6 text-center border border-gray-100 hover:border-indigo-200">
@@ -724,6 +778,7 @@
                 "apps": "My Apps",
                 "about": "About Me",
                 "contact": "Contact",
+                "toggleTheme": "Change Theme",
                 
                 // Hero section
                 "title": "Crafting Digital Experiences",
@@ -795,6 +850,7 @@
                 "apps": "Мои приложения",
                 "about": "Обо мне",
                 "contact": "Контакты",
+                "toggleTheme": "Сменить тему",
                 
                 // Hero section
                 "title": "Создаем цифровые решения",
@@ -866,6 +922,7 @@
                 "apps": "Мої додатки",
                 "about": "Про мене",
                 "contact": "Контакти",
+                "toggleTheme": "Змінити тему",
                 
                 // Hero section
                 "title": "Створюємо цифрові рішення",
@@ -933,32 +990,60 @@
             }
         };
 
+        let currentLang = 'en';
+        const langButtons = document.querySelectorAll('.lang-btn');
+
         // Mobile menu toggle
         document.getElementById('mobileMenuButton').addEventListener('click', function() {
             document.getElementById('mobileMenu').classList.toggle('open');
         });
 
         // Language switching
-        document.querySelectorAll('.lang-btn').forEach(btn => {
+        const setLanguage = (lang) => {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+             langButtons.forEach(b => {
+                b.classList.remove('bg-indigo-700');
+                if(b.getAttribute('data-lang') === lang) {
+                    b.classList.add('bg-indigo-700');
+                }
+            });
+        };
+
+        langButtons.forEach(btn => {
             btn.addEventListener('click', function() {
-                const lang = this.getAttribute('data-lang');
-                
-                // Update all elements with data-translate attribute
-                document.querySelectorAll('[data-translate]').forEach(el => {
-                    const key = el.getAttribute('data-translate');
-                    if (translations[lang] && translations[lang][key]) {
-                        el.textContent = translations[lang][key];
-                    }
-                });
-                
-                // Update active language button style
-                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('bg-indigo-700'));
-                this.classList.add('bg-indigo-700');
-                
-                // Update HTML lang attribute
-                document.documentElement.lang = lang;
+                setLanguage(this.getAttribute('data-lang'));
             });
         });
+
+        // Theme Switcher
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        const body = document.body;
+
+        const applyTheme = (theme) => {
+            if (theme === 'dark') {
+                body.classList.add('dark');
+            } else {
+                body.classList.remove('dark');
+            }
+        };
+
+        const toggleTheme = () => {
+            const newTheme = body.classList.contains('dark') ? 'light' : 'dark';
+            localStorage.setItem('saieesoft-theme', newTheme);
+            applyTheme(newTheme);
+        };
+
+        themeToggle.addEventListener('click', toggleTheme);
+        themeToggleMobile.addEventListener('click', toggleTheme);
+
 
         // Form submission
         document.getElementById('contactForm').addEventListener('submit', function(e) {
@@ -1058,7 +1143,7 @@
         // Scroll to top button
         const scrollToTopBtn = document.createElement('button');
         scrollToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
-        scrollToTopBtn.className = 'fixed bottom-8 right-8 w-12 h-12 bg-indigo-600 text-white rounded-full shadow-lg hover:bg-indigo-700 transition duration-300 opacity-0 invisible transform translate-y-4';
+        scrollToTopBtn.className = 'fixed bottom-8 right-8 w-12 h-12 bg-indigo-600 text-white rounded-full shadow-lg hover:bg-indigo-700 transition duration-300 opacity-0 invisible transform translate-y-4 z-50';
         scrollToTopBtn.style.transition = 'all 0.3s ease';
         document.body.appendChild(scrollToTopBtn);
 
@@ -1079,10 +1164,14 @@
             }
         });
 
-        // Initialize animations on page load
+        // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
             // Set default language to English
-            document.querySelector('.lang-btn[data-lang="en"]').click();
+            setLanguage('en');
+
+            // Apply saved theme
+            const savedTheme = localStorage.getItem('saieesoft-theme') || 'light';
+            applyTheme(savedTheme);
             
             // Add fade-in animation to elements
             const fadeElements = document.querySelectorAll('.fade-in');

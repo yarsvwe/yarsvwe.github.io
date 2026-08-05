@@ -129,6 +129,8 @@
         /* Обновленный заголовок с градиентом */
         .hero-text h1 { font-size: 3.8rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; }
         .gradient-text { 
+            display: inline-block;
+            color: #b8d0ff;
             background: linear-gradient(135deg, #6a9eff, #b8d0ff); 
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent; 
@@ -321,7 +323,7 @@
     <!-- Header -->
     <header class="site-header" id="header">
         <div class="logo">
-            <img src="nullware_logop.png" alt="nullware">
+            <p data-i18n="logoText">nullware</p>
         </div>
         <div class="nav-links">
             <a href="#projects" data-i18n="projects">Projects</a>
@@ -352,7 +354,7 @@
                 <div style="display:inline-block; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.04); border-radius:60px; padding:6px 18px; font-size:0.75rem; font-weight:600; letter-spacing:0.04em; color:#6a9eff; margin-bottom:1.2rem;">
                     <i class="fas fa-code" style="margin-right:8px;"></i> <span data-i18n="badge">digital forge</span>
                 </div>
-                <h1 class="text-glow-strong" data-i18n="heroTitle">Crafting digital tools<span class="gradient-text"></span></h1>
+                <h1 class="text-glow-strong"><span data-i18n="heroTitle">Crafting </span><span class="gradient-text" data-i18n="heroTitleAccent">digital tools</span></h1>
                 <p data-i18n="heroDesc">Minimalist utilities, sharp design. Built for developers, creators, and curious minds.</p>
                 <div style="display:flex; gap:12px; flex-wrap:wrap;">
                     <a href="#projects" class="btn-primary"><i class="fas fa-arrow-down" style="margin-right:10px;"></i><span data-i18n="explore">Explore work</span></a>
@@ -374,7 +376,7 @@
 
     <!-- Projects -->
     <section class="projects-section" id="projects">
-        <div class="section-title text-glow" data-i18n="projectsTitle">Selected <span class="gradient-text">works</span></div>
+        <div class="section-title text-glow"><span data-i18n="projectsTitle">Selected</span> <span class="gradient-text" data-i18n="projectsTitleAccent">works</span></div>
         <div class="section-sub" data-i18n="projectsSub">Tools we've built with precision, each solving real problems with clarity.</div>
         <div class="projects-grid">
             <!-- card 1: SwiftService -->
@@ -426,7 +428,7 @@
     <section class="contact-section" id="contact">
         <div class="contact-grid">
             <div class="contact-info fade-up">
-                <h3 class="text-glow" data-i18n="contactTitle">Let's <span class="gradient-text">collaborate</span></h3>
+                <h3 class="text-glow"><span data-i18n="contactTitle">Let's</span> <span class="gradient-text" data-i18n="contactTitleAccent">collaborate</span></h3>
                 <p data-i18n="contactDesc">Have a project in mind? Reach out — we're always open to new ideas and partnerships.</p>
                 <div class="contact-item"><i class="fas fa-envelope"></i> <a href="mailto:nullwarelabs@duck.com">nullwarelabs@duck.com</a></div>
                 <div class="contact-item"><i class="fab fa-github"></i> <a href="https://github.com/nullwarelabs" target="_blank">https://github.com/nullwarelabs</a></div>
@@ -524,99 +526,99 @@
         // ---------- i18n (7 Languages) ----------
         const translations = {
             en: {
-                badge: 'digital forge', heroTitle: 'Crafting ', heroDesc: 'Minimalist utilities, sharp design. Built for developers, creators, and curious minds.',
+                badge: 'digital forge', heroTitle: 'Crafting ', heroTitleAccent: 'digital tools', heroDesc: 'Minimalist utilities, sharp design. Built for developers, creators, and curious minds.',
                 explore: 'Explore work', talk: "Let's talk", statProjects: 'projects', statUsers: 'users', statLanguages: 'languages',
-                projectsTitle: 'Selected works', projectsSub: "Tools we've built with precision, each solving real problems with clarity.",
+                projectsTitle: 'Selected', projectsTitleAccent: 'works', projectsSub: "Tools we've built with precision, each solving real problems with clarity.",
                 swiftDesc: 'Windows optimization suite — clean, repair, and tune your system with a single lightweight tool.',
                 exoluteDesc: 'Real‑time currency converter with historical data, offline mode, and a clean interface.',
                 askDesc: 'Telegram bot for anonymous messaging with end‑to‑end privacy and no data storage.',
                 tagSystem: 'System', tagWindows: 'Windows', tagUtils: 'Utilities', tagFinance: 'Finance', tagAndroid: 'Android', tagOffline: 'Offline', tagSocial: 'Social', tagPrivacy: 'Privacy',
                 viewDetails: 'View Details', viewStore: 'View on Play Store', openTelegram: 'Open in Telegram',
-                contactTitle: "Let's collaborate", contactDesc: 'Have a project in mind? Reach out — we\'re always open to new ideas and partnerships.',
+                contactTitle: "Let's", contactTitleAccent: 'collaborate', contactDesc: 'Have a project in mind? Reach out — we\'re always open to new ideas and partnerships.',
                 playStore: 'Play Store Developer', sendBtn: 'Send message',
                 namePlaceholder: 'Your name', emailPlaceholder: 'Your email', messagePlaceholder: 'Tell us about your idea...',
                 copyright: '© 2026 Nullware · built with precision.', projects: 'Projects', contact: 'Contact',
             },
             ru: {
-                badge: 'цифровая кузница', heroTitle: 'Создаём ', heroDesc: 'Минималистичные утилиты, острый дизайн. Для разработчиков, создателей и пытливых умов.',
+                badge: 'цифровая кузница', heroTitle: 'Создаём ', heroTitleAccent: 'цифровые инструменты', heroDesc: 'Минималистичные утилиты, острый дизайн. Для разработчиков, создателей и пытливых умов.',
                 explore: 'Проекты', talk: 'Связаться', statProjects: 'проектов', statUsers: 'пользователей', statLanguages: 'языков',
-                projectsTitle: 'Избранные работы', projectsSub: 'Инструменты, созданные с точностью, решающие реальные задачи с ясностью.',
+                projectsTitle: 'Избранные', projectsTitleAccent: 'работы', projectsSub: 'Инструменты, созданные с точностью, решающие реальные задачи с ясностью.',
                 swiftDesc: 'Набор оптимизации Windows — чистите, ремонтируйте и настраивайте систему одним лёгким инструментом.',
                 exoluteDesc: 'Конвертер валют в реальном времени с историей, офлайн-режимом и чистым интерфейсом.',
                 askDesc: 'Телеграм-бот для анонимных сообщений с сквозной приватностью без хранения данных.',
                 tagSystem: 'Система', tagWindows: 'Windows', tagUtils: 'Утилиты', tagFinance: 'Финансы', tagAndroid: 'Android', tagOffline: 'Офлайн', tagSocial: 'Социальное', tagPrivacy: 'Приватность',
                 viewDetails: 'Подробнее', viewStore: 'Смотреть в Play Store', openTelegram: 'Открыть в Telegram',
-                contactTitle: 'Давайте сотрудничать', contactDesc: 'Есть проект? Свяжитесь — мы всегда открыты к новым идеям и партнёрству.',
+                contactTitle: 'Давайте', contactTitleAccent: 'сотрудничать', contactDesc: 'Есть проект? Свяжитесь — мы всегда открыты к новым идеям и партнёрству.',
                 playStore: 'Разработчик Play Store', sendBtn: 'Отправить',
                 namePlaceholder: 'Ваше имя', emailPlaceholder: 'Ваш email', messagePlaceholder: 'Расскажите о своей идее...',
                 copyright: '© 2026 Nullware · сделано с точностью.', projects: 'Проекты', contact: 'Контакт',
             },
             ua: {
-                badge: 'цифрова кузня', heroTitle: 'Створюємо ', heroDesc: 'Мінімалістичні утиліти, гострий дизайн. Для розробників, творців і допитливих умів.',
+                badge: 'цифрова кузня', heroTitle: 'Створюємо ', heroTitleAccent: 'цифрові інструменти', heroDesc: 'Мінімалістичні утиліти, гострий дизайн. Для розробників, творців і допитливих умів.',
                 explore: 'Проєкти', talk: "Зв'язатись", statProjects: 'проєктів', statUsers: 'користувачів', statLanguages: 'мов',
-                projectsTitle: 'Вибрані роботи', projectsSub: 'Інструменти, створені з точністю, що вирішують реальні задачі з ясністю.',
+                projectsTitle: 'Вибрані', projectsTitleAccent: 'роботи', projectsSub: 'Інструменти, створені з точністю, що вирішують реальні задачі з ясністю.',
                 swiftDesc: 'Набір оптимізації Windows — чистіть, ремонтуйте та налаштовуйте систему одним легким інструментом.',
                 exoluteDesc: 'Конвертер валют у реальному часі з історією, офлайн-режимом та чистим інтерфейсом.',
                 askDesc: 'Телеграм-бот для анонімних повідомлень з наскрізною приватністю без зберігання даних.',
                 tagSystem: 'Система', tagWindows: 'Windows', tagUtils: 'Утиліти', tagFinance: 'Фінанси', tagAndroid: 'Android', tagOffline: 'Офлайн', tagSocial: 'Соціальне', tagPrivacy: 'Конфіденційність',
                 viewDetails: 'Детальніше', viewStore: 'Дивитись у Play Store', openTelegram: 'Відкрити в Telegram',
-                contactTitle: 'Співпрацюймо', contactDesc: 'Маєте проєкт? Звʼяжіться — ми завжди відкриті до нових ідей і партнерства.',
+                contactTitle: 'Співпрацюймо', contactTitleAccent: '', contactDesc: 'Маєте проєкт? Звʼяжіться — ми завжди відкриті до нових ідей і партнерства.',
                 playStore: 'Розробник Play Store', sendBtn: 'Надіслати',
                 namePlaceholder: "Ваше ім'я", emailPlaceholder: 'Ваш email', messagePlaceholder: 'Розкажіть про свою ідею...',
                 copyright: '© 2026 Nullware · зроблено з точністю.', projects: 'Проєкти', contact: 'Контакт',
             },
             es: {
-                badge: 'forja digital', heroTitle: 'Creando ', heroDesc: 'Utilidades minimalistas, diseño afilado. Hecho para desarrolladores, creadores y mentes curiosas.',
+                badge: 'forja digital', heroTitle: 'Creando ', heroTitleAccent: 'herramientas digitales', heroDesc: 'Utilidades minimalistas, diseño afilado. Hecho para desarrolladores, creadores y mentes curiosas.',
                 explore: 'Explorar', talk: 'Hablemos', statProjects: 'proyectos', statUsers: 'usuarios', statLanguages: 'idiomas',
-                projectsTitle: 'Trabajos seleccionados', projectsSub: 'Herramientas creadas con precisión, resolviendo problemas reales con claridad.',
+                projectsTitle: 'Trabajos', projectsTitleAccent: 'seleccionados', projectsSub: 'Herramientas creadas con precisión, resolviendo problemas reales con claridad.',
                 swiftDesc: 'Suite de optimización para Windows — limpia, repara y ajusta tu sistema con una sola herramienta ligera.',
                 exoluteDesc: 'Conversor de divisas en tiempo real con datos históricos, modo offline e interfaz limpia.',
                 askDesc: 'Bot de Telegram para mensajería anónima con privacidad de extremo a extremo y sin almacenamiento de datos.',
                 tagSystem: 'Sistema', tagWindows: 'Windows', tagUtils: 'Utilidades', tagFinance: 'Finanzas', tagAndroid: 'Android', tagOffline: 'Sin conexión', tagSocial: 'Social', tagPrivacy: 'Privacidad',
                 viewDetails: 'Más info', viewStore: 'Ver en Play Store', openTelegram: 'Abrir en Telegram',
-                contactTitle: 'Colaboremos', contactDesc: '¿Tienes un proyecto? Contáctanos — siempre abiertos a nuevas ideas y alianzas.',
+                contactTitle: 'Colaboremos', contactTitleAccent: '', contactDesc: '¿Tienes un proyecto? Contáctanos — siempre abiertos a nuevas ideas y alianzas.',
                 playStore: 'Desarrollador Play Store', sendBtn: 'Enviar mensaje',
                 namePlaceholder: 'Tu nombre', emailPlaceholder: 'Tu correo', messagePlaceholder: 'Cuéntanos tu idea...',
                 copyright: '© 2026 Nullware · hecho con precisión.', projects: 'Proyectos', contact: 'Contacto',
             },
             fr: {
-                badge: 'forge numérique', heroTitle: 'Créer ', heroDesc: 'Utilitaires minimalistes, design épuré. Conçu pour les développeurs, créateurs et esprits curieux.',
+                badge: 'forge numérique', heroTitle: 'Créer ', heroTitleAccent: 'des outils numériques', heroDesc: 'Utilitaires minimalistes, design épuré. Conçu pour les développeurs, créateurs et esprits curieux.',
                 explore: 'Explorer', talk: 'Discutons', statProjects: 'projets', statUsers: 'utilisateurs', statLanguages: 'langues',
-                projectsTitle: 'Travaux sélectionnés', projectsSub: 'Des outils construits avec précision, résolvant des problèmes concrets avec clarté.',
+                projectsTitle: 'Travaux', projectsTitleAccent: 'sélectionnés', projectsSub: 'Des outils construits avec précision, résolvant des problèmes concrets avec clarté.',
                 swiftDesc: "Suite d'optimisation Windows — nettoyez, réparez et ajustez votre système avec un seul outil léger.",
                 exoluteDesc: 'Convertisseur de devises en temps réel avec données historiques, mode hors ligne et interface épurée.',
                 askDesc: "Bot Telegram pour messagerie anonyme avec confidentialité de bout en bout et aucune sauvegarde de données.",
                 tagSystem: 'Système', tagWindows: 'Windows', tagUtils: 'Utilitaires', tagFinance: 'Finance', tagAndroid: 'Android', tagOffline: 'Hors ligne', tagSocial: 'Social', tagPrivacy: 'Confidentialité',
                 viewDetails: 'En savoir plus', viewStore: 'Voir sur Play Store', openTelegram: 'Ouvrir dans Telegram',
-                contactTitle: 'Collaborons', contactDesc: "Un projet en tête ? Contactez-nous — toujours ouverts aux nouvelles idées et partenariats.",
+                contactTitle: 'Collaborons', contactTitleAccent: '', contactDesc: "Un projet en tête ? Contactez-nous — toujours ouverts aux nouvelles idées et partenariats.",
                 playStore: 'Développeur Play Store', sendBtn: 'Envoyer',
                 namePlaceholder: 'Votre nom', emailPlaceholder: 'Votre email', messagePlaceholder: 'Parlez-nous de votre idée...',
                 copyright: '© 2026 Nullware · conçu avec précision.', projects: 'Projets', contact: 'Contact',
             },
             nl: {
-                badge: 'digitale smederij', heroTitle: 'Creëren ', heroDesc: 'Minimalistische hulpprogramma\'s, scherp ontwerp. Gebouwd voor ontwikkelaars, makers en nieuwsgierige geesten.',
+                badge: 'digitale smederij', heroTitle: 'Creëren ', heroTitleAccent: 'digitale tools', heroDesc: 'Minimalistische hulpprogramma\'s, scherp ontwerp. Gebouwd voor ontwikkelaars, makers en nieuwsgierige geesten.',
                 explore: 'Ontdek werk', talk: 'Laten we praten', statProjects: 'projecten', statUsers: 'gebruikers', statLanguages: 'talen',
-                projectsTitle: 'Geselecteerde werken', projectsSub: 'Tools die we met precisie hebben gebouwd, die echte problemen helder oplossen.',
+                projectsTitle: 'Geselecteerde', projectsTitleAccent: 'werken', projectsSub: 'Tools die we met precisie hebben gebouwd, die echte problemen helder oplossen.',
                 swiftDesc: 'Windows-optimalisatiesuite — reinig, repareer en stem uw systeem af met één lichtgewicht tool.',
                 exoluteDesc: 'Valutacalculator in realtime met historische gegevens, offline modus en een schone interface.',
                 askDesc: 'Telegram-bot voor anonieme berichten met end-to-end privacy en geen gegevensopslag.',
                 tagSystem: 'Systeem', tagWindows: 'Windows', tagUtils: 'Hulpprogramma\'s', tagFinance: 'Financiën', tagAndroid: 'Android', tagOffline: 'Offline', tagSocial: 'Sociaal', tagPrivacy: 'Privacy',
                 viewDetails: 'Bekijk details', viewStore: 'Bekijk in Play Store', openTelegram: 'Openen in Telegram',
-                contactTitle: "Laten we samenwerken", contactDesc: 'Heeft u een project in gedachten? Neem contact op — we staan altijd open voor nieuwe ideeën en samenwerkingen.',
+                contactTitle: "Laten we", contactTitleAccent: 'samenwerken', contactDesc: 'Heeft u een project in gedachten? Neem contact op — we staan altijd open voor nieuwe ideeën en samenwerkingen.',
                 playStore: 'Play Store Ontwikkelaar', sendBtn: 'Verstuur bericht',
                 namePlaceholder: 'Uw naam', emailPlaceholder: 'Uw e-mail', messagePlaceholder: 'Vertel ons over uw idee...',
                 copyright: '© 2026 Nullware · gebouwd met precisie.', projects: 'Projecten', contact: 'Contact',
             },
             de: {
-                badge: 'digitale Schmiede', heroTitle: 'Erschaffen ', heroDesc: 'Minimalistische Werkzeuge, klares Design. Für Entwickler, Kreative und neugierige Köpfe.',
+                badge: 'digitale Schmiede', heroTitle: 'Erschaffen ', heroTitleAccent: 'digitale Werkzeuge', heroDesc: 'Minimalistische Werkzeuge, klares Design. Für Entwickler, Kreative und neugierige Köpfe.',
                 explore: 'Projekte', talk: 'Kontakt', statProjects: 'Projekte', statUsers: 'Nutzer', statLanguages: 'Sprachen',
-                projectsTitle: 'Ausgewählte Arbeiten', projectsSub: 'Präzise gebaute Werkzeuge, die echte Probleme klar lösen.',
+                projectsTitle: 'Ausgewählte', projectsTitleAccent: 'Arbeiten', projectsSub: 'Präzise gebaute Werkzeuge, die echte Probleme klar lösen.',
                 swiftDesc: 'Windows-Optimierungssuite — reinigen, reparieren und optimieren Sie Ihr System mit einem Tool.',
                 exoluteDesc: 'Echtzeit-Währungsumrechner mit historischen Daten, Offline-Modus und klarem Interface.',
                 askDesc: 'Telegram-Bot für anonyme Nachrichten mit Ende-zu-Ende-Verschlüsselung und ohne Datenspeicherung.',
                 tagSystem: 'System', tagWindows: 'Windows', tagUtils: 'Tools', tagFinance: 'Finanzen', tagAndroid: 'Android', tagOffline: 'Offline', tagSocial: 'Sozial', tagPrivacy: 'Privatsphäre',
                 viewDetails: 'Mehr erfahren', viewStore: 'Bei Play Store ansehen', openTelegram: 'In Telegram öffnen',
-                contactTitle: 'Zusammenarbeiten', contactDesc: 'Haben Sie ein Projekt? Kontaktieren Sie uns — offen für neue Ideen und Partnerschaften.',
+                contactTitle: 'Zusammenarbeiten', contactTitleAccent: '', contactDesc: 'Haben Sie ein Projekt? Kontaktieren Sie uns — offen für neue Ideen und Partnerschaften.',
                 playStore: 'Play Store Entwickler', sendBtn: 'Nachricht senden',
                 namePlaceholder: 'Ihr Name', emailPlaceholder: 'Ihre E-Mail', messagePlaceholder: 'Erzählen Sie uns von Ihrer Idee...',
                 copyright: '© 2026 Nullware · mit Präzision gebaut.', projects: 'Projekte', contact: 'Kontakt',

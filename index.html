@@ -125,7 +125,16 @@
         .hero { padding: 140px 2rem 100px; min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; }
         .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 40%, rgba(30, 80, 200, 0.08), transparent 70%), radial-gradient(ellipse at 70% 60%, rgba(70, 130, 255, 0.04), transparent 60%); pointer-events: none; }
         .hero-content { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 2; }
-        .hero-text h1 { font-size: 3.8rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; display: flex; flex-wrap: wrap; align-items: center; gap: 10px;}
+        
+        /* Обновленный заголовок с градиентом */
+        .hero-text h1 { font-size: 3.8rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; }
+        .gradient-text { 
+            background: linear-gradient(135deg, #6a9eff, #b8d0ff); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            background-clip: text; 
+        }
+        
         .hero-text p { font-size: 1.2rem; color: #90a8c8; margin: 1.5rem 0 2.2rem; max-width: 480px; }
         .hero-stats { display: flex; gap: 3rem; margin-top: 2rem; }
         .stat-item h3 { font-size: 2.2rem; font-weight: 700; background: linear-gradient(135deg, #b8d0ff, #6a9eff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
@@ -142,7 +151,11 @@
             animation: orbPulse 8s ease-in-out infinite;
         }
         .hero-orb img {
-            width: 70px; height: auto; object-fit: contain; opacity: 0.6; filter: drop-shadow(0 0 15px rgba(60, 140, 255, 0.15));
+            width: 100px; 
+            height: auto; 
+            object-fit: contain; 
+            opacity: 0.7; 
+            filter: drop-shadow(0 0 20px rgba(60, 140, 255, 0.2));
         }
         @keyframes orbPulse { 0%, 100% { transform: scale(1); box-shadow: 0 0 80px rgba(40, 100, 255, 0.08), inset 0 0 80px rgba(40, 100, 255, 0.04); } 50% { transform: scale(1.04); box-shadow: 0 0 120px rgba(40, 100, 255, 0.15), inset 0 0 120px rgba(40, 100, 255, 0.06); } }
 
@@ -282,7 +295,7 @@
             .hero-text p { margin-left: auto; margin-right: auto; }
             .hero-stats { justify-content: center; }
             .hero-orb { width: 200px; height: 200px; }
-            .hero-orb img { width: 45px; }
+            .hero-orb img { width: 70px; } /* Увеличен размер на планшетах */
             .hero-text h1 { font-size: 2.8rem; }
             .contact-grid { grid-template-columns: 1fr; }
             .nav-links { gap: 1.2rem; }
@@ -292,7 +305,8 @@
             .modal-info { padding: 2rem; }
         }
         @media (max-width: 500px) {
-            .hero-text h1 { font-size: 2.2rem; flex-direction: column; align-items: flex-start;}
+            .hero-text h1 { font-size: 2.2rem; }
+            .hero-orb img { width: 55px; } /* Увеличен размер на телефонах */
             .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
             .stat-item h3 { font-size: 1.8rem; }
         }
@@ -321,6 +335,11 @@
                 <div class="lang-dropdown" id="langDropdown">
                     <div class="lang-option active" data-lang="en">🇬🇧 English</div>
                     <div class="lang-option" data-lang="ru">🇷🇺 Русский</div>
+                    <div class="lang-option" data-lang="ua">🇺🇦 Українська</div>
+                    <div class="lang-option" data-lang="es">🇪🇸 Español</div>
+                    <div class="lang-option" data-lang="fr">🇫🇷 Français</div>
+                    <div class="lang-option" data-lang="nl">🇳🇱 Nederlands</div>
+                    <div class="lang-option" data-lang="de">🇩🇪 Deutsch</div>
                 </div>
             </div>
         </div>
@@ -333,7 +352,7 @@
                 <div style="display:inline-block; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.04); border-radius:60px; padding:6px 18px; font-size:0.75rem; font-weight:600; letter-spacing:0.04em; color:#6a9eff; margin-bottom:1.2rem;">
                     <i class="fas fa-code" style="margin-right:8px;"></i> <span data-i18n="badge">digital forge</span>
                 </div>
-                <h1 class="text-glow-strong" data-i18n="heroTitle">Crafting <br /><span style="background:linear-gradient(135deg,#6a9eff,#b8d0ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">digital tools</span></h1>
+                <h1 class="text-glow-strong" data-i18n="heroTitle">Crafting <span class="gradient-text">digital tools</span></h1>
                 <p data-i18n="heroDesc">Minimalist utilities, sharp design. Built for developers, creators, and curious minds.</p>
                 <div style="display:flex; gap:12px; flex-wrap:wrap;">
                     <a href="#projects" class="btn-primary"><i class="fas fa-arrow-down" style="margin-right:10px;"></i><span data-i18n="explore">Explore work</span></a>
@@ -355,7 +374,7 @@
 
     <!-- Projects -->
     <section class="projects-section" id="projects">
-        <div class="section-title text-glow" data-i18n="projectsTitle">Selected <span style="background:linear-gradient(135deg,#6a9eff,#b8d0ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">works</span></div>
+        <div class="section-title text-glow" data-i18n="projectsTitle">Selected <span class="gradient-text">works</span></div>
         <div class="section-sub" data-i18n="projectsSub">Tools we've built with precision, each solving real problems with clarity.</div>
         <div class="projects-grid">
             <!-- card 1: SwiftService -->
@@ -407,7 +426,7 @@
     <section class="contact-section" id="contact">
         <div class="contact-grid">
             <div class="contact-info fade-up">
-                <h3 class="text-glow" data-i18n="contactTitle">Let's <span style="background:linear-gradient(135deg,#6a9eff,#b8d0ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">collaborate</span></h3>
+                <h3 class="text-glow" data-i18n="contactTitle">Let's <span class="gradient-text">collaborate</span></h3>
                 <p data-i18n="contactDesc">Have a project in mind? Reach out — we're always open to new ideas and partnerships.</p>
                 <div class="contact-item"><i class="fas fa-envelope"></i> <a href="mailto:nullwarelabs@duck.com">nullwarelabs@duck.com</a></div>
                 <div class="contact-item"><i class="fab fa-github"></i> <a href="https://github.com/nullwarelabs" target="_blank">https://github.com/nullwarelabs</a></div>
@@ -502,10 +521,10 @@
     </div>
 
     <script>
-        // ---------- i18n (EN & RU for example) ----------
+        // ---------- i18n (7 Languages) ----------
         const translations = {
             en: {
-                badge: 'digital forge', heroTitle: 'Crafting', heroDesc: 'Minimalist utilities, sharp design. Built for developers, creators, and curious minds.',
+                badge: 'digital forge', heroTitle: 'Crafting ', heroDesc: 'Minimalist utilities, sharp design. Built for developers, creators, and curious minds.',
                 explore: 'Explore work', talk: "Let's talk", statProjects: 'projects', statUsers: 'users', statLanguages: 'languages',
                 projectsTitle: 'Selected works', projectsSub: "Tools we've built with precision, each solving real problems with clarity.",
                 swiftDesc: 'Windows optimization suite — clean, repair, and tune your system with a single lightweight tool.',
@@ -519,7 +538,7 @@
                 copyright: '© 2026 Nullware · built with precision.', projects: 'Projects', contact: 'Contact',
             },
             ru: {
-                badge: 'цифровая кузница', heroTitle: 'Создаём', heroDesc: 'Минималистичные утилиты, острый дизайн. Для разработчиков, создателей и пытливых умов.',
+                badge: 'цифровая кузница', heroTitle: 'Создаём ', heroDesc: 'Минималистичные утилиты, острый дизайн. Для разработчиков, создателей и пытливых умов.',
                 explore: 'Проекты', talk: 'Связаться', statProjects: 'проектов', statUsers: 'пользователей', statLanguages: 'языков',
                 projectsTitle: 'Избранные работы', projectsSub: 'Инструменты, созданные с точностью, решающие реальные задачи с ясностью.',
                 swiftDesc: 'Набор оптимизации Windows — чистите, ремонтируйте и настраивайте систему одним лёгким инструментом.',
@@ -531,6 +550,76 @@
                 playStore: 'Разработчик Play Store', sendBtn: 'Отправить',
                 namePlaceholder: 'Ваше имя', emailPlaceholder: 'Ваш email', messagePlaceholder: 'Расскажите о своей идее...',
                 copyright: '© 2026 Nullware · сделано с точностью.', projects: 'Проекты', contact: 'Контакт',
+            },
+            ua: {
+                badge: 'цифрова кузня', heroTitle: 'Створюємо ', heroDesc: 'Мінімалістичні утиліти, гострий дизайн. Для розробників, творців і допитливих умів.',
+                explore: 'Проєкти', talk: "Зв'язатись", statProjects: 'проєктів', statUsers: 'користувачів', statLanguages: 'мов',
+                projectsTitle: 'Вибрані роботи', projectsSub: 'Інструменти, створені з точністю, що вирішують реальні задачі з ясністю.',
+                swiftDesc: 'Набір оптимізації Windows — чистіть, ремонтуйте та налаштовуйте систему одним легким інструментом.',
+                exoluteDesc: 'Конвертер валют у реальному часі з історією, офлайн-режимом та чистим інтерфейсом.',
+                askDesc: 'Телеграм-бот для анонімних повідомлень з наскрізною приватністю без зберігання даних.',
+                tagSystem: 'Система', tagWindows: 'Windows', tagUtils: 'Утиліти', tagFinance: 'Фінанси', tagAndroid: 'Android', tagOffline: 'Офлайн', tagSocial: 'Соціальне', tagPrivacy: 'Конфіденційність',
+                viewDetails: 'Детальніше', viewStore: 'Дивитись у Play Store', openTelegram: 'Відкрити в Telegram',
+                contactTitle: 'Співпрацюймо', contactDesc: 'Маєте проєкт? Звʼяжіться — ми завжди відкриті до нових ідей і партнерства.',
+                playStore: 'Розробник Play Store', sendBtn: 'Надіслати',
+                namePlaceholder: "Ваше ім'я", emailPlaceholder: 'Ваш email', messagePlaceholder: 'Розкажіть про свою ідею...',
+                copyright: '© 2026 Nullware · зроблено з точністю.', projects: 'Проєкти', contact: 'Контакт',
+            },
+            es: {
+                badge: 'forja digital', heroTitle: 'Creando ', heroDesc: 'Utilidades minimalistas, diseño afilado. Hecho para desarrolladores, creadores y mentes curiosas.',
+                explore: 'Explorar', talk: 'Hablemos', statProjects: 'proyectos', statUsers: 'usuarios', statLanguages: 'idiomas',
+                projectsTitle: 'Trabajos seleccionados', projectsSub: 'Herramientas creadas con precisión, resolviendo problemas reales con claridad.',
+                swiftDesc: 'Suite de optimización para Windows — limpia, repara y ajusta tu sistema con una sola herramienta ligera.',
+                exoluteDesc: 'Conversor de divisas en tiempo real con datos históricos, modo offline e interfaz limpia.',
+                askDesc: 'Bot de Telegram para mensajería anónima con privacidad de extremo a extremo y sin almacenamiento de datos.',
+                tagSystem: 'Sistema', tagWindows: 'Windows', tagUtils: 'Utilidades', tagFinance: 'Finanzas', tagAndroid: 'Android', tagOffline: 'Sin conexión', tagSocial: 'Social', tagPrivacy: 'Privacidad',
+                viewDetails: 'Más info', viewStore: 'Ver en Play Store', openTelegram: 'Abrir en Telegram',
+                contactTitle: 'Colaboremos', contactDesc: '¿Tienes un proyecto? Contáctanos — siempre abiertos a nuevas ideas y alianzas.',
+                playStore: 'Desarrollador Play Store', sendBtn: 'Enviar mensaje',
+                namePlaceholder: 'Tu nombre', emailPlaceholder: 'Tu correo', messagePlaceholder: 'Cuéntanos tu idea...',
+                copyright: '© 2026 Nullware · hecho con precisión.', projects: 'Proyectos', contact: 'Contacto',
+            },
+            fr: {
+                badge: 'forge numérique', heroTitle: 'Créer ', heroDesc: 'Utilitaires minimalistes, design épuré. Conçu pour les développeurs, créateurs et esprits curieux.',
+                explore: 'Explorer', talk: 'Discutons', statProjects: 'projets', statUsers: 'utilisateurs', statLanguages: 'langues',
+                projectsTitle: 'Travaux sélectionnés', projectsSub: 'Des outils construits avec précision, résolvant des problèmes concrets avec clarté.',
+                swiftDesc: "Suite d'optimisation Windows — nettoyez, réparez et ajustez votre système avec un seul outil léger.",
+                exoluteDesc: 'Convertisseur de devises en temps réel avec données historiques, mode hors ligne et interface épurée.',
+                askDesc: "Bot Telegram pour messagerie anonyme avec confidentialité de bout en bout et aucune sauvegarde de données.",
+                tagSystem: 'Système', tagWindows: 'Windows', tagUtils: 'Utilitaires', tagFinance: 'Finance', tagAndroid: 'Android', tagOffline: 'Hors ligne', tagSocial: 'Social', tagPrivacy: 'Confidentialité',
+                viewDetails: 'En savoir plus', viewStore: 'Voir sur Play Store', openTelegram: 'Ouvrir dans Telegram',
+                contactTitle: 'Collaborons', contactDesc: "Un projet en tête ? Contactez-nous — toujours ouverts aux nouvelles idées et partenariats.",
+                playStore: 'Développeur Play Store', sendBtn: 'Envoyer',
+                namePlaceholder: 'Votre nom', emailPlaceholder: 'Votre email', messagePlaceholder: 'Parlez-nous de votre idée...',
+                copyright: '© 2026 Nullware · conçu avec précision.', projects: 'Projets', contact: 'Contact',
+            },
+            nl: {
+                badge: 'digitale smederij', heroTitle: 'Creëren ', heroDesc: 'Minimalistische hulpprogramma\'s, scherp ontwerp. Gebouwd voor ontwikkelaars, makers en nieuwsgierige geesten.',
+                explore: 'Ontdek werk', talk: 'Laten we praten', statProjects: 'projecten', statUsers: 'gebruikers', statLanguages: 'talen',
+                projectsTitle: 'Geselecteerde werken', projectsSub: 'Tools die we met precisie hebben gebouwd, die echte problemen helder oplossen.',
+                swiftDesc: 'Windows-optimalisatiesuite — reinig, repareer en stem uw systeem af met één lichtgewicht tool.',
+                exoluteDesc: 'Valutacalculator in realtime met historische gegevens, offline modus en een schone interface.',
+                askDesc: 'Telegram-bot voor anonieme berichten met end-to-end privacy en geen gegevensopslag.',
+                tagSystem: 'Systeem', tagWindows: 'Windows', tagUtils: 'Hulpprogramma\'s', tagFinance: 'Financiën', tagAndroid: 'Android', tagOffline: 'Offline', tagSocial: 'Sociaal', tagPrivacy: 'Privacy',
+                viewDetails: 'Bekijk details', viewStore: 'Bekijk in Play Store', openTelegram: 'Openen in Telegram',
+                contactTitle: "Laten we samenwerken", contactDesc: 'Heeft u een project in gedachten? Neem contact op — we staan altijd open voor nieuwe ideeën en samenwerkingen.',
+                playStore: 'Play Store Ontwikkelaar', sendBtn: 'Verstuur bericht',
+                namePlaceholder: 'Uw naam', emailPlaceholder: 'Uw e-mail', messagePlaceholder: 'Vertel ons over uw idee...',
+                copyright: '© 2026 Nullware · gebouwd met precisie.', projects: 'Projecten', contact: 'Contact',
+            },
+            de: {
+                badge: 'digitale Schmiede', heroTitle: 'Erschaffen ', heroDesc: 'Minimalistische Werkzeuge, klares Design. Für Entwickler, Kreative und neugierige Köpfe.',
+                explore: 'Projekte', talk: 'Kontakt', statProjects: 'Projekte', statUsers: 'Nutzer', statLanguages: 'Sprachen',
+                projectsTitle: 'Ausgewählte Arbeiten', projectsSub: 'Präzise gebaute Werkzeuge, die echte Probleme klar lösen.',
+                swiftDesc: 'Windows-Optimierungssuite — reinigen, reparieren und optimieren Sie Ihr System mit einem Tool.',
+                exoluteDesc: 'Echtzeit-Währungsumrechner mit historischen Daten, Offline-Modus und klarem Interface.',
+                askDesc: 'Telegram-Bot für anonyme Nachrichten mit Ende-zu-Ende-Verschlüsselung und ohne Datenspeicherung.',
+                tagSystem: 'System', tagWindows: 'Windows', tagUtils: 'Tools', tagFinance: 'Finanzen', tagAndroid: 'Android', tagOffline: 'Offline', tagSocial: 'Sozial', tagPrivacy: 'Privatsphäre',
+                viewDetails: 'Mehr erfahren', viewStore: 'Bei Play Store ansehen', openTelegram: 'In Telegram öffnen',
+                contactTitle: 'Zusammenarbeiten', contactDesc: 'Haben Sie ein Projekt? Kontaktieren Sie uns — offen für neue Ideen und Partnerschaften.',
+                playStore: 'Play Store Entwickler', sendBtn: 'Nachricht senden',
+                namePlaceholder: 'Ihr Name', emailPlaceholder: 'Ihre E-Mail', messagePlaceholder: 'Erzählen Sie uns von Ihrer Idee...',
+                copyright: '© 2026 Nullware · mit Präzision gebaut.', projects: 'Projekte', contact: 'Kontakt',
             }
         };
 
@@ -582,7 +671,7 @@
         function openSwiftServiceModal() {
             document.getElementById('swiftServiceModal').classList.add('open');
             document.body.style.overflow = 'hidden';
-            currentSlide = 0; // Reset slide on open
+            currentSlide = 0; 
             updateSlide();
         }
 

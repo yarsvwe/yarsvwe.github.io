@@ -25,59 +25,23 @@
         }
 
         /* scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #10161f;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #2a3a5a;
-            border-radius: 20px;
-        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #10161f; }
+        ::-webkit-scrollbar-thumb { background: #2a3a5a; border-radius: 20px; }
 
         /* glass & blur */
-        .glass {
-            background: rgba(12, 20, 32, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            box-shadow: 0 12px 40px -8px rgba(0, 0, 0, 0.6);
-        }
-
-        .glass-light {
-            background: rgba(18, 28, 44, 0.5);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-        }
+        .glass { background: rgba(12, 20, 32, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.04); box-shadow: 0 12px 40px -8px rgba(0, 0, 0, 0.6); }
+        .glass-light { background: rgba(18, 28, 44, 0.5); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border: 1px solid rgba(255, 255, 255, 0.03); }
 
         /* gradients */
-        .gradient-1 {
-            background: linear-gradient(145deg, #1a2a4a, #0e1628);
-        }
-        .gradient-2 {
-            background: linear-gradient(135deg, #14233e, #0b111f);
-        }
+        .gradient-1 { background: linear-gradient(145deg, #1a2a4a, #0e1628); }
+        .gradient-2 { background: linear-gradient(135deg, #14233e, #0b111f); }
 
-        .text-glow {
-            color: #b8d0ff;
-            text-shadow: 0 0 12px rgba(70, 130, 255, 0.3);
-        }
+        .text-glow { color: #b8d0ff; text-shadow: 0 0 12px rgba(70, 130, 255, 0.3); }
+        .text-glow-strong { color: #d6e4ff; text-shadow: 0 0 20px rgba(60, 130, 255, 0.5), 0 0 60px rgba(40, 80, 200, 0.2); }
 
-        .text-glow-strong {
-            color: #d6e4ff;
-            text-shadow: 0 0 20px rgba(60, 130, 255, 0.5), 0 0 60px rgba(40, 80, 200, 0.2);
-        }
-
-        .border-glow {
-            border-color: rgba(100, 170, 255, 0.15);
-            transition: border-color 0.3s;
-        }
-        .border-glow:hover {
-            border-color: rgba(100, 170, 255, 0.4);
-            box-shadow: 0 0 20px rgba(60, 140, 255, 0.08);
-        }
+        .border-glow { border-color: rgba(100, 170, 255, 0.15); transition: border-color 0.3s; }
+        .border-glow:hover { border-color: rgba(100, 170, 255, 0.4); box-shadow: 0 0 20px rgba(60, 140, 255, 0.08); }
 
         .btn-primary {
             background: linear-gradient(135deg, #1b3b7a, #0f244a);
@@ -90,6 +54,11 @@
             transition: all 0.3s ease;
             letter-spacing: 0.01em;
             box-shadow: 0 4px 16px rgba(0, 30, 80, 0.3);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
         }
         .btn-primary:hover {
             background: linear-gradient(135deg, #264a8a, #142e5a);
@@ -106,501 +75,231 @@
             border-radius: 60px;
             font-weight: 500;
             transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
         }
-        .btn-secondary:hover {
-            border-color: rgba(100, 170, 255, 0.4);
-            background: rgba(255, 255, 255, 0.02);
-            color: #d6e4ff;
-        }
+        .btn-secondary:hover { border-color: rgba(100, 170, 255, 0.4); background: rgba(255, 255, 255, 0.02); color: #d6e4ff; }
 
         /* header */
         .site-header {
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            padding: 0 2rem;
-            background: rgba(10, 14, 23, 0.7);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-            height: 72px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            position: fixed; width: 100%; top: 0; z-index: 1000; padding: 0 2rem;
+            background: rgba(10, 14, 23, 0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03); height: 72px;
+            display: flex; align-items: center; justify-content: space-between;
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 700;
-            font-size: 1.5rem;
-            letter-spacing: -0.02em;
+            display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.5rem; letter-spacing: -0.02em;
         }
-        .logo i {
-            font-size: 1.6rem;
-            color: #6a9eff;
-            filter: drop-shadow(0 0 10px rgba(70, 130, 255, 0.3));
-        }
-        .logo span {
-            background: linear-gradient(135deg, #b8d0ff, #6a9eff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .logo img {
+            height: 36px; width: auto; object-fit: contain;
         }
 
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 2.5rem;
-            font-weight: 500;
-            font-size: 0.95rem;
-            color: #a0b8d8;
-        }
-        .nav-links a {
-            color: inherit;
-            text-decoration: none;
-            transition: 0.2s;
-            position: relative;
-        }
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #6a9eff;
-            transition: 0.3s;
-            border-radius: 4px;
-        }
-        .nav-links a:hover {
-            color: #d6e4ff;
-        }
-        .nav-links a:hover::after {
-            width: 100%;
-        }
+        .nav-links { display: flex; align-items: center; gap: 2.5rem; font-weight: 500; font-size: 0.95rem; color: #a0b8d8; }
+        .nav-links a { color: inherit; text-decoration: none; transition: 0.2s; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: #6a9eff; transition: 0.3s; border-radius: 4px; }
+        .nav-links a:hover { color: #d6e4ff; }
+        .nav-links a:hover::after { width: 100%; }
 
         .lang-selector {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(255, 255, 255, 0.03);
-            padding: 6px 12px 6px 16px;
-            border-radius: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            cursor: pointer;
-            transition: 0.3s;
-            font-weight: 500;
-            font-size: 0.85rem;
-            color: #a0b8d8;
+            display: flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.03);
+            padding: 6px 12px 6px 16px; border-radius: 40px; border: 1px solid rgba(255, 255, 255, 0.06);
+            cursor: pointer; transition: 0.3s; font-weight: 500; font-size: 0.85rem; color: #a0b8d8; position: relative;
         }
-        .lang-selector:hover {
-            border-color: rgba(100, 170, 255, 0.3);
-            background: rgba(255, 255, 255, 0.06);
-        }
-        .lang-selector i {
-            font-size: 0.7rem;
-            margin-left: 4px;
-        }
-
+        .lang-selector:hover { border-color: rgba(100, 170, 255, 0.3); background: rgba(255, 255, 255, 0.06); }
+        
         .lang-dropdown {
-            position: absolute;
-            top: 60px;
-            right: 0;
-            background: #111a2a;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 20px;
-            padding: 10px 6px;
-            min-width: 170px;
-            backdrop-filter: blur(20px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
-            display: none;
-            flex-direction: column;
-            gap: 4px;
+            position: absolute; top: 50px; right: 0; background: #111a2a; border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 20px; padding: 10px 6px; min-width: 170px; backdrop-filter: blur(20px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7); display: none; flex-direction: column; gap: 4px; z-index: 999;
         }
-        .lang-dropdown.open {
-            display: flex;
-        }
-        .lang-option {
-            padding: 8px 16px;
-            border-radius: 12px;
-            font-size: 0.85rem;
-            color: #b0c8e8;
-            transition: 0.2s;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .lang-option:hover {
-            background: rgba(255, 255, 255, 0.04);
-            color: #d6e4ff;
-        }
-        .lang-option.active {
-            background: rgba(60, 140, 255, 0.08);
-            color: #d6e4ff;
-            font-weight: 600;
-        }
+        .lang-dropdown.open { display: flex; }
+        .lang-option { padding: 8px 16px; border-radius: 12px; font-size: 0.85rem; color: #b0c8e8; transition: 0.2s; cursor: pointer; display: flex; align-items: center; gap: 8px; }
+        .lang-option:hover { background: rgba(255, 255, 255, 0.04); color: #d6e4ff; }
+        .lang-option.active { background: rgba(60, 140, 255, 0.08); color: #d6e4ff; font-weight: 600; }
 
         /* hero */
-        .hero {
-            padding: 140px 2rem 100px;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse at 30% 40%, rgba(30, 80, 200, 0.08), transparent 70%),
-                radial-gradient(ellipse at 70% 60%, rgba(70, 130, 255, 0.04), transparent 60%);
-            pointer-events: none;
-        }
-
-        .hero-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-text h1 {
-            font-size: 3.8rem;
-            font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-        }
-        .hero-text p {
-            font-size: 1.2rem;
-            color: #90a8c8;
-            margin: 1.5rem 0 2.2rem;
-            max-width: 480px;
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 3rem;
-            margin-top: 2rem;
-        }
-        .stat-item h3 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #b8d0ff, #6a9eff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .stat-item p {
-            font-size: 0.85rem;
-            color: #7890b0;
-            letter-spacing: 0.02em;
-        }
-
-        .hero-visual {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .hero-orb {
-            width: 340px;
-            height: 340px;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, rgba(60, 140, 255, 0.2), rgba(10, 20, 50, 0.6));
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            box-shadow: 0 0 80px rgba(40, 100, 255, 0.08), inset 0 0 80px rgba(40, 100, 255, 0.04);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 6rem;
-            color: rgba(100, 170, 255, 0.2);
+        .hero { padding: 140px 2rem 100px; min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 40%, rgba(30, 80, 200, 0.08), transparent 70%), radial-gradient(ellipse at 70% 60%, rgba(70, 130, 255, 0.04), transparent 60%); pointer-events: none; }
+        .hero-content { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 2; }
+        .hero-text h1 { font-size: 3.8rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; display: flex; flex-wrap: wrap; align-items: center; gap: 10px;}
+        .hero-text p { font-size: 1.2rem; color: #90a8c8; margin: 1.5rem 0 2.2rem; max-width: 480px; }
+        .hero-stats { display: flex; gap: 3rem; margin-top: 2rem; }
+        .stat-item h3 { font-size: 2.2rem; font-weight: 700; background: linear-gradient(135deg, #b8d0ff, #6a9eff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .stat-item p { font-size: 0.85rem; color: #7890b0; letter-spacing: 0.02em; }
+        .hero-visual { display: flex; justify-content: center; align-items: center; }
+        
+        /* Логотип в сфере */
+        .hero-orb { 
+            width: 340px; height: 340px; border-radius: 50%; 
+            background: radial-gradient(circle at 30% 30%, rgba(60, 140, 255, 0.2), rgba(10, 20, 50, 0.6)); 
+            border: 1px solid rgba(255, 255, 255, 0.04); 
+            box-shadow: 0 0 80px rgba(40, 100, 255, 0.08), inset 0 0 80px rgba(40, 100, 255, 0.04); 
+            display: flex; align-items: center; justify-content: center; 
             animation: orbPulse 8s ease-in-out infinite;
         }
-        @keyframes orbPulse {
-            0%,
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 80px rgba(40, 100, 255, 0.08), inset 0 0 80px rgba(40, 100, 255, 0.04);
-            }
-            50% {
-                transform: scale(1.04);
-                box-shadow: 0 0 120px rgba(40, 100, 255, 0.15), inset 0 0 120px rgba(40, 100, 255, 0.06);
-            }
+        .hero-orb img {
+            width: 70px; height: auto; object-fit: contain; opacity: 0.6; filter: drop-shadow(0 0 15px rgba(60, 140, 255, 0.15));
         }
+        @keyframes orbPulse { 0%, 100% { transform: scale(1); box-shadow: 0 0 80px rgba(40, 100, 255, 0.08), inset 0 0 80px rgba(40, 100, 255, 0.04); } 50% { transform: scale(1.04); box-shadow: 0 0 120px rgba(40, 100, 255, 0.15), inset 0 0 120px rgba(40, 100, 255, 0.06); } }
 
         /* projects */
-        .projects-section {
-            padding: 80px 2rem 100px;
-            background: #0b111f;
-            position: relative;
-        }
-        .projects-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(100, 170, 255, 0.1), transparent);
-        }
-        .section-title {
-            font-size: 2.8rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-        .section-sub {
-            text-align: center;
-            color: #90a8c8;
-            max-width: 600px;
-            margin: 0 auto 3.5rem;
-            font-size: 1.05rem;
-        }
+        .projects-section { padding: 80px 2rem 100px; background: #0b111f; position: relative; }
+        .projects-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(100, 170, 255, 0.1), transparent); }
+        .section-title { font-size: 2.8rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1rem; text-align: center; }
+        .section-sub { text-align: center; color: #90a8c8; max-width: 600px; margin: 0 auto 3.5rem; font-size: 1.05rem; }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
 
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
+        /* Project Card */
         .project-card {
-            background: rgba(14, 22, 40, 0.6);
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 32px;
-            padding: 2rem 1.8rem;
-            transition: all 0.35s ease;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            display: flex;
-            flex-direction: column;
+            background: rgba(14, 22, 40, 0.6); backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.04); border-radius: 32px; padding: 2rem 1.8rem;
+            transition: all 0.35s ease; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            display: flex; flex-direction: column;
         }
-        .project-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(100, 170, 255, 0.2);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(40, 100, 255, 0.04);
+        .project-card:hover { transform: translateY(-8px); border-color: rgba(100, 170, 255, 0.2); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(40, 100, 255, 0.04); }
+        .project-icon { font-size: 2.4rem; color: #6a9eff; margin-bottom: 1.2rem; filter: drop-shadow(0 0 12px rgba(60, 140, 255, 0.15)); }
+        .project-card h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.6rem; letter-spacing: -0.02em; display: flex; align-items: center; gap: 10px;}
+        .version-chip { font-size: 10px; font-weight: 500; padding: 2px 10px; border-radius: 40px; background: rgba(60, 140, 255, 0.1); color: #6a9eff; border: 1px solid rgba(60, 140, 255, 0.15); }
+        .project-card p { color: #90a8c8; font-size: 0.95rem; margin-bottom: 1.5rem; flex: 1; }
+        .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.8rem; }
+        .tag { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); padding: 4px 14px; border-radius: 40px; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.03em; color: #90b0d0; }
+        
+        .project-details-btn {
+            display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px 0;
+            border-radius: 16px; background: rgba(20, 40, 160, 0.08); border: 1px solid rgba(20, 40, 160, 0.15);
+            color: #8e95b3; font-size: 0.95rem; transition: 0.3s; margin-top: auto; cursor: pointer; text-decoration: none;
         }
-        .project-icon {
-            font-size: 2.4rem;
-            color: #6a9eff;
-            margin-bottom: 1.2rem;
-            filter: drop-shadow(0 0 12px rgba(60, 140, 255, 0.15));
-        }
-        .project-card h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.6rem;
-            letter-spacing: -0.02em;
-        }
-        .project-card p {
-            color: #90a8c8;
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-            flex: 1;
-        }
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 1.8rem;
-        }
-        .tag {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 4px 14px;
-            border-radius: 40px;
-            font-size: 0.7rem;
-            font-weight: 500;
-            letter-spacing: 0.03em;
-            color: #90b0d0;
-        }
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: #6a9eff;
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-decoration: none;
-            transition: 0.2s;
-            margin-top: 4px;
-        }
-        .project-link i {
-            transition: 0.2s;
-        }
-        .project-link:hover {
-            color: #8ab4ff;
-        }
-        .project-link:hover i {
-            transform: translateX(4px);
-        }
+        .project-card:hover .project-details-btn { background: rgba(20, 40, 160, 0.15); border-color: rgba(20, 40, 160, 0.30); color: #b8d0ff; }
 
         /* contact */
-        .contact-section {
-            padding: 80px 2rem 100px;
-            background: #0a0e17;
-            border-top: 1px solid rgba(255, 255, 255, 0.02);
+        .contact-section { padding: 80px 2rem 100px; background: #0a0e17; border-top: 1px solid rgba(255, 255, 255, 0.02); }
+        .contact-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; align-items: start; }
+        .contact-info h3 { font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; }
+        .contact-info p { color: #90a8c8; margin-bottom: 1.8rem; }
+        .contact-item { display: flex; align-items: center; gap: 14px; margin-bottom: 1rem; color: #b0c8e8; transition: 0.2s; }
+        .contact-item i { width: 20px; color: #6a9eff; }
+        .contact-item:hover { color: #d6e4ff; }
+        .contact-item a { color: inherit; text-decoration: none; transition: 0.2s; border-bottom: 1px solid transparent;}
+        .contact-item a:hover { color: #b8d0ff; border-bottom-color: rgba(255,255,255,0.1); }
+        
+        .contact-form input, .contact-form textarea { width: 100%; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 20px; padding: 14px 20px; color: #eef2f6; font-family: 'Inter', sans-serif; font-size: 0.95rem; transition: 0.3s; margin-bottom: 1.2rem; outline: none; }
+        .contact-form input:focus, .contact-form textarea:focus { border-color: rgba(100, 170, 255, 0.3); background: rgba(255, 255, 255, 0.04); box-shadow: 0 0 20px rgba(40, 100, 255, 0.04); }
+        .contact-form textarea { min-height: 120px; resize: vertical; }
+        .contact-form .btn-primary { width: 100%; justify-content: center; }
+
+        footer { padding: 2.5rem 2rem; text-align: center; color: #506080; font-size: 0.85rem; border-top: 1px solid rgba(255, 255, 255, 0.02); }
+
+        /* === MODAL WINDOW === */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(10px);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 9999; opacity: 0; pointer-events: none;
+            transition: all 0.3s ease; padding: 1.5rem;
         }
-        .contact-grid {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 3rem;
-            align-items: start;
-        }
-        .contact-info h3 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        .contact-info p {
-            color: #90a8c8;
-            margin-bottom: 1.8rem;
-        }
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 1rem;
-            color: #b0c8e8;
-            transition: 0.2s;
-        }
-        .contact-item i {
-            width: 20px;
-            color: #6a9eff;
-        }
-        .contact-item:hover {
-            color: #d6e4ff;
+        .modal-overlay.open { opacity: 1; pointer-events: auto; }
+        
+        .modal-backdrop {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            cursor: pointer;
         }
 
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.02);
+        .modal-content {
+            position: relative; max-width: 840px; width: 100%; max-height: 90vh; overflow-y: auto;
+            background: #0a0e17; border-radius: 32px;
             border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 20px;
-            padding: 14px 20px;
-            color: #eef2f6;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            transition: 0.3s;
-            margin-bottom: 1.2rem;
-            outline: none;
+            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.8), 0 0 60px rgba(60, 140, 255, 0.05);
+            display: grid; grid-template-columns: 1fr 1.2fr;
+            transform: scale(0.95); transition: transform 0.3s ease;
         }
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            border-color: rgba(100, 170, 255, 0.3);
-            background: rgba(255, 255, 255, 0.04);
-            box-shadow: 0 0 20px rgba(40, 100, 255, 0.04);
-        }
-        .contact-form textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-        .contact-form .btn-primary {
-            width: 100%;
-            justify-content: center;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1rem;
-        }
+        .modal-overlay.open .modal-content { transform: scale(1); }
 
-        footer {
-            padding: 2.5rem 2rem;
-            text-align: center;
-            color: #506080;
-            font-size: 0.85rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.02);
+        .modal-close {
+            position: absolute; top: 16px; right: 16px;
+            width: 36px; height: 36px; border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06);
+            color: #8e95b3; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: 0.3s; z-index: 10;
         }
+        .modal-close:hover { background: rgba(255, 255, 255, 0.08); color: #fff; transform: rotate(90deg); }
+
+        .modal-preview {
+            background: #0d1424; border-top-left-radius: 32px; border-bottom-left-radius: 32px;
+            padding: 2rem; border-right: 1px solid rgba(255, 255, 255, 0.03);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            min-height: 400px; position: relative;
+        }
+        .modal-preview .img-container {
+            width: 100%; height: 250px; border-radius: 20px;
+            display: flex; align-items: center; justify-content: center; 
+            border: 1px solid rgba(255, 255, 255, 0.03); margin-bottom: 1rem; 
+            overflow: hidden; background: #111a2e; position: relative;
+        }
+        .modal-preview .img-container img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+            transition: opacity 0.4s ease; position: absolute; top: 0; left: 0; opacity: 0;
+        }
+        .modal-preview .img-container img.active { opacity: 1; }
+        
+        .modal-preview .carousel-dots { display: flex; gap: 6px; margin-top: 0.5rem; }
+        .modal-preview .carousel-dots span { width: 8px; height: 8px; border-radius: 50%; background: #2a3a5a; transition: 0.3s; cursor: pointer; }
+        .modal-preview .carousel-dots span.active { background: #4a7aff; width: 24px; border-radius: 10px; }
+        .modal-preview .nav-arrows { position: absolute; width: 100%; display: flex; justify-content: space-between; padding: 0 1rem; pointer-events: none; top: 50%; transform: translateY(-50%); }
+        .modal-preview .nav-arrows button { pointer-events: auto; width: 36px; height: 36px; border-radius: 50%; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.08); color: #fff; cursor: pointer; transition: 0.3s; backdrop-filter: blur(4px); }
+        .modal-preview .nav-arrows button:hover { background: rgba(255,255,255,0.15); transform: scale(1.1); }
+
+        .modal-info {
+            padding: 2.5rem; display: flex; flex-direction: column; justify-content: center;
+        }
+        .modal-header { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
+        .modal-header img { width: 48px; height: 48px; border-radius: 14px; }
+        .modal-header h2 { font-size: 1.8rem; font-weight: 700; margin: 0; }
+        .modal-header .version-chip { margin-left: 0; }
+        .modal-info p { color: #8e95b3; font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; }
+        .modal-features { list-style: none; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; }
+        .modal-features li { display: flex; align-items: center; gap: 10px; color: #b0c8e8; font-size: 0.9rem; }
+        .modal-features li i { color: #6a9eff; font-size: 0.7rem; }
+        
+        .modal-privacy-highlight {
+            background: rgba(10, 30, 70, 0.3); border: 1px solid rgba(60, 140, 255, 0.1);
+            border-radius: 16px; padding: 1rem 1.2rem; margin-bottom: 1.5rem;
+            display: flex; align-items: flex-start; gap: 12px;
+        }
+        .modal-privacy-highlight i { color: #6a9eff; font-size: 1.2rem; margin-top: 2px;}
+        .modal-privacy-highlight p { margin: 0; font-size: 0.85rem; color: #b0c8e8; font-weight: 400; line-height: 1.5; }
+
+        .modal-actions { display: flex; flex-direction: column; gap: 12px; }
+        .modal-actions .btn-primary { justify-content: center; width: 100%; padding: 14px; font-size: 1rem; }
+        .modal-actions .btn-secondary { justify-content: center; width: 100%; padding: 14px; }
 
         /* responsive */
         @media (max-width: 900px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .hero-text p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-            .hero-stats {
-                justify-content: center;
-            }
-            .hero-orb {
-                width: 200px;
-                height: 200px;
-                font-size: 4rem;
-            }
-            .hero-text h1 {
-                font-size: 2.8rem;
-            }
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-            .nav-links {
-                gap: 1.2rem;
-            }
-            .site-header {
-                padding: 0 1.2rem;
-            }
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-text p { margin-left: auto; margin-right: auto; }
+            .hero-stats { justify-content: center; }
+            .hero-orb { width: 200px; height: 200px; }
+            .hero-orb img { width: 45px; }
+            .hero-text h1 { font-size: 2.8rem; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .nav-links { gap: 1.2rem; }
+            .site-header { padding: 0 1.2rem; }
+            .modal-content { grid-template-columns: 1fr; max-height: 95vh; }
+            .modal-preview { border-radius: 32px 32px 0 0; border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.03); min-height: 300px; }
+            .modal-info { padding: 2rem; }
         }
         @media (max-width: 500px) {
-            .hero-text h1 {
-                font-size: 2.2rem;
-            }
-            .hero-stats {
-                gap: 1.5rem;
-                flex-wrap: wrap;
-            }
-            .stat-item h3 {
-                font-size: 1.8rem;
-            }
+            .hero-text h1 { font-size: 2.2rem; flex-direction: column; align-items: flex-start;}
+            .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+            .stat-item h3 { font-size: 1.8rem; }
         }
 
-        /* particles / decorative */
-        .glow-line {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(100, 170, 255, 0.08), transparent);
-            margin: 0 auto;
-            max-width: 800px;
-        }
-
-        .fade-up {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp 0.8s ease forwards;
-        }
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .delay-1 {
-            animation-delay: 0.1s;
-        }
-        .delay-2 {
-            animation-delay: 0.2s;
-        }
-        .delay-3 {
-            animation-delay: 0.3s;
-        }
-        .delay-4 {
-            animation-delay: 0.4s;
-        }
+        .fade-up { opacity: 0; transform: translateY(20px); animation: fadeUp 0.8s ease forwards; }
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+        .delay-1 { animation-delay: 0.1s; } .delay-2 { animation-delay: 0.2s; } .delay-3 { animation-delay: 0.3s; } .delay-4 { animation-delay: 0.4s; }
     </style>
 </head>
 <body>
@@ -608,8 +307,7 @@
     <!-- Header -->
     <header class="site-header" id="header">
         <div class="logo">
-            <i class="fas fa-cube"></i>
-            <span>nullware</span>
+            <img src="nullware_logop.png" alt="nullware">
         </div>
         <div class="nav-links">
             <a href="#projects" data-i18n="projects">Projects</a>
@@ -622,12 +320,7 @@
                 </div>
                 <div class="lang-dropdown" id="langDropdown">
                     <div class="lang-option active" data-lang="en">🇬🇧 English</div>
-                    <div class="lang-option" data-lang="es">🇪🇸 Español</div>
-                    <div class="lang-option" data-lang="fr">🇫🇷 Français</div>
-                    <div class="lang-option" data-lang="de">🇩🇪 Deutsch</div>
-                    <div class="lang-option" data-lang="pl">🇵🇱 Polski</div>
                     <div class="lang-option" data-lang="ru">🇷🇺 Русский</div>
-                    <div class="lang-option" data-lang="ua">🇺🇦 Українська</div>
                 </div>
             </div>
         </div>
@@ -654,7 +347,7 @@
             </div>
             <div class="hero-visual fade-up delay-2">
                 <div class="hero-orb">
-                    <i class="fas fa-cube" style="font-size:5rem; opacity:0.15; color:#6a9eff;"></i>
+                    <img src="nullware_logo.png" alt="nullware logo">
                 </div>
             </div>
         </div>
@@ -665,17 +358,19 @@
         <div class="section-title text-glow" data-i18n="projectsTitle">Selected <span style="background:linear-gradient(135deg,#6a9eff,#b8d0ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">works</span></div>
         <div class="section-sub" data-i18n="projectsSub">Tools we've built with precision, each solving real problems with clarity.</div>
         <div class="projects-grid">
-            <!-- card 1 -->
+            <!-- card 1: SwiftService -->
             <div class="project-card fade-up delay-1">
-                <div class="project-icon"><i class="fas fa-bolt"></i></div>
-                <h3>SwiftService</h3>
+                <div class="project-icon"><i class="fa-solid fa-gear"></i></div>
+                <h3>SwiftService <span class="version-chip">v1.2.1</span></h3>
                 <p data-i18n="swiftDesc">Windows optimization suite — clean, repair, and tune your system with a single lightweight tool.</p>
                 <div class="project-tags">
                     <span class="tag" data-i18n="tagSystem">System</span>
                     <span class="tag" data-i18n="tagWindows">Windows</span>
                     <span class="tag" data-i18n="tagUtils">Utilities</span>
                 </div>
-                <a href="#" class="project-link" data-i18n="learnMore">Learn more <i class="fas fa-arrow-right"></i></a>
+                <button class="project-details-btn" onclick="openSwiftServiceModal()">
+                    <i class="fa-solid fa-expand text-xs"></i> <span data-i18n="viewDetails">View Details</span>
+                </button>
             </div>
             <!-- card 2 -->
             <div class="project-card fade-up delay-2">
@@ -687,7 +382,9 @@
                     <span class="tag" data-i18n="tagAndroid">Android</span>
                     <span class="tag" data-i18n="tagOffline">Offline</span>
                 </div>
-                <a href="https://play.google.com/store/apps/details?id=com.saieesoft.exolute&pcampaignid=web_share" class="project-link" data-i18n="viewStore">View on Play Store <i class="fas fa-arrow-right"></i></a>
+                <a href="https://play.google.com/store/apps/details?id=com.saieesoft.exolute&pcampaignid=web_share" target="_blank" class="project-details-btn" data-i18n="viewStore">
+                    <i class="fa-brands fa-google-play"></i> View on Play Store
+                </a>
             </div>
             <!-- card 3 -->
             <div class="project-card fade-up delay-3">
@@ -699,7 +396,9 @@
                     <span class="tag" data-i18n="tagPrivacy">Privacy</span>
                     <span class="tag">Telegram</span>
                 </div>
-                <a href="https://t.me/AskAnonymousBot" class="project-link" data-i18n="openTelegram">Open in Telegram <i class="fas fa-arrow-right"></i></a>
+                <a href="https://t.me/AskAnonymousBot" target="_blank" class="project-details-btn" data-i18n="openTelegram">
+                    <i class="fa-brands fa-telegram"></i> Open in Telegram
+                </a>
             </div>
         </div>
     </section>
@@ -710,9 +409,9 @@
             <div class="contact-info fade-up">
                 <h3 class="text-glow" data-i18n="contactTitle">Let's <span style="background:linear-gradient(135deg,#6a9eff,#b8d0ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">collaborate</span></h3>
                 <p data-i18n="contactDesc">Have a project in mind? Reach out — we're always open to new ideas and partnerships.</p>
-                <div class="contact-item"><i class="fas fa-envelope"></i> nullwarelabs@duck.com</div>
-                <div class="contact-item"><i class="fab fa-github"></i> https://github.com/nullwarelabs</div>
-                <div class="contact-item"><i class="fas fa-mobile-alt"></i> <span data-i18n="playStore">Play Store Developer</span></div>
+                <div class="contact-item"><i class="fas fa-envelope"></i> <a href="mailto:nullwarelabs@duck.com">nullwarelabs@duck.com</a></div>
+                <div class="contact-item"><i class="fab fa-github"></i> <a href="https://github.com/nullwarelabs" target="_blank">https://github.com/nullwarelabs</a></div>
+                <div class="contact-item"><i class="fas fa-mobile-alt"></i> <a href="https://play.google.com/store/apps/dev?id=6446780682856756622" target="_blank"><span data-i18n="playStore">Play Store Developer</span></a></div>
             </div>
             <form class="contact-form fade-up delay-1" action="https://formsubmit.co/nullwarelabs@duck.com" method="POST">
                 <input type="hidden" name="_captcha" value="false" />
@@ -729,260 +428,109 @@
         <span data-i18n="copyright">© 2026 nullware · built with precision.</span>
     </footer>
 
+    <!-- SwiftService Modal -->
+    <div class="modal-overlay" id="swiftServiceModal">
+        <div class="modal-backdrop" onclick="closeSwiftServiceModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeSwiftServiceModal()">
+                <i class="fa-solid fa-xmark text-sm"></i>
+            </button>
+            <!-- Left Side: Preview (Screenshots) -->
+            <div class="modal-preview">
+                <div class="nav-arrows">
+                    <button onclick="changeSlide(-1)"><i class="fa-solid fa-chevron-left text-xs"></i></button>
+                    <button onclick="changeSlide(1)"><i class="fa-solid fa-chevron-right text-xs"></i></button>
+                </div>
+                <div class="img-container">
+                    <img src="screenshot1.png" class="active" alt="Screenshot 1">
+                    <img src="screenshot2.png" alt="Screenshot 2">
+                    <img src="screenshot3.png" alt="Screenshot 3">
+                    <img src="screenshot4.png" alt="Screenshot 4">
+                </div>
+                <div class="carousel-dots" id="carouselDots">
+                    <span class="active" onclick="goToSlide(0)"></span>
+                    <span onclick="goToSlide(1)"></span>
+                    <span onclick="goToSlide(2)"></span>
+                    <span onclick="goToSlide(3)"></span>
+                </div>
+            </div>
+            <!-- Right Side: Info -->
+            <div class="modal-info">
+                <div class="modal-header">
+                    <div style="width: 48px; height: 48px; background: #1b3b7a; border-radius: 14px; display: flex; align-items: center; justify-content: center; color: #fff; border: 1px solid rgba(255,255,255,0.1);">
+                        <i class="fa-solid fa-gear fa-lg"></i>
+                    </div>
+                    <h2>SwiftService Tool</h2>
+                    <span class="version-chip">v1.2.1</span>
+                </div>
+                
+                <p style="color: #b0c8e8; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.5rem;">
+                    Комплексный набор оптимизации Windows для требовательных пользователей. Очищайте, восстанавливайте и настраивайте систему тонкими инструментами — всё в одном лёгком приложении.
+                </p>
+
+                <ul class="modal-features">
+                    <li><i class="fa-solid fa-circle"></i> Очистка системы и удаление мусора</li>
+                    <li><i class="fa-solid fa-circle"></i> Обслуживание и ремонт реестра</li>
+                    <li><i class="fa-solid fa-circle"></i> Сетевые инструменты и DNS</li>
+                    <li><i class="fa-solid fa-circle"></i> Оптимизация для игр и производительности</li>
+                    <li><i class="fa-solid fa-circle"></i> Управление конфиденциальностью и безопасностью</li>
+                    <li><i class="fa-solid fa-circle"></i> Локализация EN / RU</li>
+                </ul>
+
+                <!-- Privacy Highlight Text -->
+                <div class="modal-privacy-highlight">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <p>Абсолютная приватность: Мы не собираем телеметрию, не отправляем данные на сервера и не отслеживаем ваши действия. Всё работает локально и безопасно.</p>
+                </div>
+
+                <div class="project-tags" style="margin-bottom: 1.8rem;">
+                    <span class="tag" style="background: #101a30; border-color: #1a2a50;">Система</span>
+                    <span class="tag" style="background: #101a30; border-color: #1a2a50;">Windows</span>
+                    <span class="tag" style="background: #101a30; border-color: #1a2a50;">Утилиты</span>
+                </div>
+
+                <div class="modal-actions">
+                    <button class="btn-primary" style="background: linear-gradient(135deg, #2b50aa, #1a3780);">
+                        <i class="fa-solid fa-download"></i> Скачать для Windows
+                    </button>
+                    <button class="btn-secondary" style="border-color: rgba(255,255,255,0.05);">
+                        <i class="fa-solid fa-heart" style="color: #fca5a5;"></i> Поддержать разработчика
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // ---------- i18n ----------
+        // ---------- i18n (EN & RU for example) ----------
         const translations = {
             en: {
-                badge: 'digital forge',
-                heroTitle: 'Crafting digital tools',
-                heroDesc: 'Minimalist utilities, sharp design. Built for developers, creators, and curious minds.',
-                explore: 'Explore work',
-                talk: "Let's talk",
-                statProjects: 'projects',
-                statUsers: 'users',
-                statLanguages: 'languages',
-                projectsTitle: 'Selected works',
-                projectsSub: "Tools we've built with precision, each solving real problems with clarity.",
+                badge: 'digital forge', heroTitle: 'Crafting', heroDesc: 'Minimalist utilities, sharp design. Built for developers, creators, and curious minds.',
+                explore: 'Explore work', talk: "Let's talk", statProjects: 'projects', statUsers: 'users', statLanguages: 'languages',
+                projectsTitle: 'Selected works', projectsSub: "Tools we've built with precision, each solving real problems with clarity.",
                 swiftDesc: 'Windows optimization suite — clean, repair, and tune your system with a single lightweight tool.',
                 exoluteDesc: 'Real‑time currency converter with historical data, offline mode, and a clean interface.',
                 askDesc: 'Telegram bot for anonymous messaging with end‑to‑end privacy and no data storage.',
-                tagSystem: 'System',
-                tagWindows: 'Windows',
-                tagUtils: 'Utilities',
-                tagFinance: 'Finance',
-                tagAndroid: 'Android',
-                tagOffline: 'Offline',
-                tagSocial: 'Social',
-                tagPrivacy: 'Privacy',
-                learnMore: 'Learn more',
-                viewStore: 'View on Play Store',
-                openTelegram: 'Open in Telegram',
-                contactTitle: "Let's collaborate",
-                contactDesc: 'Have a project in mind? Reach out — we\'re always open to new ideas and partnerships.',
-                playStore: 'Play Store Developer',
-                sendBtn: 'Send message',
-                namePlaceholder: 'Your name',
-                emailPlaceholder: 'Your email',
-                messagePlaceholder: 'Tell us about your idea...',
-                copyright: '© 2026 Nullware · built with precision.',
-                projects: 'Projects',
-                contact: 'Contact',
-            },
-            es: {
-                badge: 'forja digital',
-                heroTitle: 'Creando herramientas digitales',
-                heroDesc: 'Utilidades minimalistas, diseño afilado. Hecho para desarrolladores, creadores y mentes curiosas.',
-                explore: 'Explorar',
-                talk: 'Hablemos',
-                statProjects: 'proyectos',
-                statUsers: 'usuarios',
-                statLanguages: 'idiomas',
-                projectsTitle: 'Trabajos seleccionados',
-                projectsSub: 'Herramientas creadas con precisión, resolviendo problemas reales con claridad.',
-                swiftDesc: 'Suite de optimización para Windows — limpia, repara y ajusta tu sistema con una sola herramienta ligera.',
-                exoluteDesc: 'Conversor de divisas en tiempo real con datos históricos, modo offline e interfaz limpia.',
-                askDesc: 'Bot de Telegram para mensajería anónima con privacidad de extremo a extremo y sin almacenamiento de datos.',
-                tagSystem: 'Sistema',
-                tagWindows: 'Windows',
-                tagUtils: 'Utilidades',
-                tagFinance: 'Finanzas',
-                tagAndroid: 'Android',
-                tagOffline: 'Sin conexión',
-                tagSocial: 'Social',
-                tagPrivacy: 'Privacidad',
-                learnMore: 'Más info',
-                viewStore: 'Ver en Play Store',
-                openTelegram: 'Abrir en Telegram',
-                contactTitle: 'Colaboremos',
-                contactDesc: '¿Tienes un proyecto? Contáctanos — siempre abiertos a nuevas ideas y alianzas.',
-                playStore: 'Desarrollador Play Store',
-                sendBtn: 'Enviar mensaje',
-                namePlaceholder: 'Tu nombre',
-                emailPlaceholder: 'Tu correo',
-                messagePlaceholder: 'Cuéntanos tu idea...',
-                copyright: '© 2026 Nullware · hecho con precisión.',
-                projects: 'Proyectos',
-                contact: 'Contacto',
-            },
-            fr: {
-                badge: 'forge numérique',
-                heroTitle: 'Créer des outils numériques',
-                heroDesc: 'Utilitaires minimalistes, design épuré. Conçu pour les développeurs, créateurs et esprits curieux.',
-                explore: 'Explorer',
-                talk: 'Discutons',
-                statProjects: 'projets',
-                statUsers: 'utilisateurs',
-                statLanguages: 'langues',
-                projectsTitle: 'Travaux sélectionnés',
-                projectsSub: 'Des outils construits avec précision, résolvant des problèmes concrets avec clarté.',
-                swiftDesc: "Suite d'optimisation Windows — nettoyez, réparez et ajustez votre système avec un seul outil léger.",
-                exoluteDesc: 'Convertisseur de devises en temps réel avec données historiques, mode hors ligne et interface épurée.',
-                askDesc: "Bot Telegram pour messagerie anonyme avec confidentialité de bout en bout et aucune sauvegarde de données.",
-                tagSystem: 'Système',
-                tagWindows: 'Windows',
-                tagUtils: 'Utilitaires',
-                tagFinance: 'Finance',
-                tagAndroid: 'Android',
-                tagOffline: 'Hors ligne',
-                tagSocial: 'Social',
-                tagPrivacy: 'Confidentialité',
-                learnMore: 'En savoir plus',
-                viewStore: 'Voir sur Play Store',
-                openTelegram: 'Ouvrir dans Telegram',
-                contactTitle: 'Collaborons',
-                contactDesc: "Un projet en tête ? Contactez-nous — toujours ouverts aux nouvelles idées et partenariats.",
-                playStore: 'Développeur Play Store',
-                sendBtn: 'Envoyer',
-                namePlaceholder: 'Votre nom',
-                emailPlaceholder: 'Votre email',
-                messagePlaceholder: 'Parlez-nous de votre idée...',
-                copyright: '© 2026 Nullware · conçu avec précision.',
-                projects: 'Projets',
-                contact: 'Contact',
-            },
-            de: {
-                badge: 'digitale Schmiede',
-                heroTitle: 'Digitale Werkzeuge schmieden',
-                heroDesc: 'Minimalistische Werkzeuge, klares Design. Für Entwickler, Kreative und neugierige Köpfe.',
-                explore: 'Projekte',
-                talk: 'Kontakt',
-                statProjects: 'Projekte',
-                statUsers: 'Nutzer',
-                statLanguages: 'Sprachen',
-                projectsTitle: 'Ausgewählte Arbeiten',
-                projectsSub: 'Präzise gebaute Werkzeuge, die echte Probleme klar lösen.',
-                swiftDesc: 'Windows-Optimierungssuite — reinigen, reparieren und optimieren Sie Ihr System mit einem Tool.',
-                exoluteDesc: 'Echtzeit-Währungsumrechner mit historischen Daten, Offline-Modus und klarem Interface.',
-                askDesc: 'Telegram-Bot für anonyme Nachrichten mit Ende-zu-Ende-Verschlüsselung und ohne Datenspeicherung.',
-                tagSystem: 'System',
-                tagWindows: 'Windows',
-                tagUtils: 'Tools',
-                tagFinance: 'Finanzen',
-                tagAndroid: 'Android',
-                tagOffline: 'Offline',
-                tagSocial: 'Sozial',
-                tagPrivacy: 'Privatsphäre',
-                learnMore: 'Mehr erfahren',
-                viewStore: 'Bei Play Store ansehen',
-                openTelegram: 'In Telegram öffnen',
-                contactTitle: 'Zusammenarbeiten',
-                contactDesc: 'Haben Sie ein Projekt? Kontaktieren Sie uns — offen für neue Ideen und Partnerschaften.',
-                playStore: 'Play Store Entwickler',
-                sendBtn: 'Nachricht senden',
-                namePlaceholder: 'Ihr Name',
-                emailPlaceholder: 'Ihre E-Mail',
-                messagePlaceholder: 'Erzählen Sie uns von Ihrer Idee...',
-                copyright: '© 2026 Nullware · mit Präzision gebaut.',
-                projects: 'Projekte',
-                contact: 'Kontakt',
-            },
-            pl: {
-                badge: 'cyfrowa kuźnia',
-                heroTitle: 'Tworzymy cyfrowe narzędzia',
-                heroDesc: 'Minimalistyczne narzędzia, ostry design. Dla deweloperów, twórców i ciekawskich umysłów.',
-                explore: 'Projekty',
-                talk: 'Kontakt',
-                statProjects: 'projekty',
-                statUsers: 'użytkownicy',
-                statLanguages: 'języki',
-                projectsTitle: 'Wybrane prace',
-                projectsSub: 'Narzędzia stworzone z precyzją, rozwiązujące realne problemy z jasnością.',
-                swiftDesc: 'Pakiet optymalizacji Windows — czyść, naprawiaj i dostrajaj system jednym lekkim narzędziem.',
-                exoluteDesc: 'Konwerter walut w czasie rzeczywistym z danymi historycznymi, tryb offline i czysty interfejs.',
-                askDesc: 'Bot Telegram do anonimowych wiadomości z prywatnością end-to-end bez przechowywania danych.',
-                tagSystem: 'System',
-                tagWindows: 'Windows',
-                tagUtils: 'Narzędzia',
-                tagFinance: 'Finanse',
-                tagAndroid: 'Android',
-                tagOffline: 'Offline',
-                tagSocial: 'Społeczność',
-                tagPrivacy: 'Prywatność',
-                learnMore: 'Dowiedz się więcej',
-                viewStore: 'Zobacz w Play Store',
-                openTelegram: 'Otwórz w Telegramie',
-                contactTitle: 'Współpracujmy',
-                contactDesc: 'Masz projekt? Skontaktuj się — zawsze otwarci na nowe pomysły i partnerstwa.',
-                playStore: 'Deweloper Play Store',
-                sendBtn: 'Wyślij',
-                namePlaceholder: 'Twoje imię',
-                emailPlaceholder: 'Twój email',
-                messagePlaceholder: 'Opowiedz nam o swoim pomyśle...',
-                copyright: '© 2026 Nullware · zbudowane z precyzją.',
-                projects: 'Projekty',
-                contact: 'Kontakt',
+                tagSystem: 'System', tagWindows: 'Windows', tagUtils: 'Utilities', tagFinance: 'Finance', tagAndroid: 'Android', tagOffline: 'Offline', tagSocial: 'Social', tagPrivacy: 'Privacy',
+                viewDetails: 'View Details', viewStore: 'View on Play Store', openTelegram: 'Open in Telegram',
+                contactTitle: "Let's collaborate", contactDesc: 'Have a project in mind? Reach out — we\'re always open to new ideas and partnerships.',
+                playStore: 'Play Store Developer', sendBtn: 'Send message',
+                namePlaceholder: 'Your name', emailPlaceholder: 'Your email', messagePlaceholder: 'Tell us about your idea...',
+                copyright: '© 2026 Nullware · built with precision.', projects: 'Projects', contact: 'Contact',
             },
             ru: {
-                badge: 'цифровая кузница',
-                heroTitle: 'Создаём цифровые инструменты',
-                heroDesc: 'Минималистичные утилиты, острый дизайн. Для разработчиков, создателей и пытливых умов.',
-                explore: 'Проекты',
-                talk: 'Связаться',
-                statProjects: 'проектов',
-                statUsers: 'пользователей',
-                statLanguages: 'языков',
-                projectsTitle: 'Избранные работы',
-                projectsSub: 'Инструменты, созданные с точностью, решающие реальные задачи с ясностью.',
+                badge: 'цифровая кузница', heroTitle: 'Создаём', heroDesc: 'Минималистичные утилиты, острый дизайн. Для разработчиков, создателей и пытливых умов.',
+                explore: 'Проекты', talk: 'Связаться', statProjects: 'проектов', statUsers: 'пользователей', statLanguages: 'языков',
+                projectsTitle: 'Избранные работы', projectsSub: 'Инструменты, созданные с точностью, решающие реальные задачи с ясностью.',
                 swiftDesc: 'Набор оптимизации Windows — чистите, ремонтируйте и настраивайте систему одним лёгким инструментом.',
                 exoluteDesc: 'Конвертер валют в реальном времени с историей, офлайн-режимом и чистым интерфейсом.',
                 askDesc: 'Телеграм-бот для анонимных сообщений с сквозной приватностью без хранения данных.',
-                tagSystem: 'Система',
-                tagWindows: 'Windows',
-                tagUtils: 'Утилиты',
-                tagFinance: 'Финансы',
-                tagAndroid: 'Android',
-                tagOffline: 'Офлайн',
-                tagSocial: 'Социальное',
-                tagPrivacy: 'Приватность',
-                learnMore: 'Подробнее',
-                viewStore: 'Смотреть в Play Store',
-                openTelegram: 'Открыть в Telegram',
-                contactTitle: 'Давайте сотрудничать',
-                contactDesc: 'Есть проект? Свяжитесь — мы всегда открыты к новым идеям и партнёрству.',
-                playStore: 'Разработчик Play Store',
-                sendBtn: 'Отправить',
-                namePlaceholder: 'Ваше имя',
-                emailPlaceholder: 'Ваш email',
-                messagePlaceholder: 'Расскажите о своей идее...',
-                copyright: '© 2026 Nullware · сделано с точностью.',
-                projects: 'Проекты',
-                contact: 'Контакт',
-            },
-            ua: {
-                badge: 'цифрова кузня',
-                heroTitle: 'Створюємо цифрові інструменти',
-                heroDesc: 'Мінімалістичні утиліти, гострий дизайн. Для розробників, творців і допитливих умів.',
-                explore: 'Проєкти',
-                talk: "Зв'язатись",
-                statProjects: 'проєктів',
-                statUsers: 'користувачів',
-                statLanguages: 'мов',
-                projectsTitle: 'Вибрані роботи',
-                projectsSub: 'Інструменти, створені з точністю, що вирішують реальні задачі з ясністю.',
-                swiftDesc: 'Набір оптимізації Windows — чистіть, ремонтуйте та налаштовуйте систему одним легким інструментом.',
-                exoluteDesc: 'Конвертер валют у реальному часі з історією, офлайн-режимом та чистим інтерфейсом.',
-                askDesc: 'Телеграм-бот для анонімних повідомлень з наскрізною приватністю без зберігання даних.',
-                tagSystem: 'Система',
-                tagWindows: 'Windows',
-                tagUtils: 'Утиліти',
-                tagFinance: 'Фінанси',
-                tagAndroid: 'Android',
-                tagOffline: 'Офлайн',
-                tagSocial: 'Соціальне',
-                tagPrivacy: 'Конфіденційність',
-                learnMore: 'Детальніше',
-                viewStore: 'Дивитись у Play Store',
-                openTelegram: 'Відкрити в Telegram',
-                contactTitle: 'Співпрацюймо',
-                contactDesc: 'Маєте проєкт? Звʼяжіться — ми завжди відкриті до нових ідей і партнерства.',
-                playStore: 'Розробник Play Store',
-                sendBtn: 'Надіслати',
-                namePlaceholder: "Ваше ім'я",
-                emailPlaceholder: 'Ваш email',
-                messagePlaceholder: 'Розкажіть про свою ідею...',
-                copyright: '© 2026 Nullware · зроблено з точністю.',
-                projects: 'Проєкти',
-                contact: 'Контакт',
+                tagSystem: 'Система', tagWindows: 'Windows', tagUtils: 'Утилиты', tagFinance: 'Финансы', tagAndroid: 'Android', tagOffline: 'Офлайн', tagSocial: 'Социальное', tagPrivacy: 'Приватность',
+                viewDetails: 'Подробнее', viewStore: 'Смотреть в Play Store', openTelegram: 'Открыть в Telegram',
+                contactTitle: 'Давайте сотрудничать', contactDesc: 'Есть проект? Свяжитесь — мы всегда открыты к новым идеям и партнёрству.',
+                playStore: 'Разработчик Play Store', sendBtn: 'Отправить',
+                namePlaceholder: 'Ваше имя', emailPlaceholder: 'Ваш email', messagePlaceholder: 'Расскажите о своей идее...',
+                copyright: '© 2026 Nullware · сделано с точностью.', projects: 'Проекты', contact: 'Контакт',
             }
         };
 
@@ -992,22 +540,10 @@
             if (!translations[lang]) return;
             currentLang = lang;
             const t = translations[lang];
-
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (t[key] !== undefined) el.textContent = t[key];
-            });
-            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-                const key = el.getAttribute('data-i18n-placeholder');
-                if (t[key] !== undefined) el.placeholder = t[key];
-            });
-
+            document.querySelectorAll('[data-i18n]').forEach(el => { const key = el.getAttribute('data-i18n'); if (t[key] !== undefined) el.textContent = t[key]; });
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { const key = el.getAttribute('data-i18n-placeholder'); if (t[key] !== undefined) el.placeholder = t[key]; });
             document.getElementById('currentLangLabel').textContent = lang.toUpperCase();
-
-            document.querySelectorAll('.lang-option').forEach(opt => {
-                opt.classList.toggle('active', opt.getAttribute('data-lang') === lang);
-            });
-
+            document.querySelectorAll('.lang-option').forEach(opt => { opt.classList.toggle('active', opt.getAttribute('data-lang') === lang); });
             localStorage.setItem('nullware-lang', lang);
         }
 
@@ -1021,18 +557,11 @@
         // ---- dropdown ----
         const langToggle = document.getElementById('langToggle');
         const langDropdown = document.getElementById('langDropdown');
-        langToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            langDropdown.classList.toggle('open');
-        });
+        langToggle.addEventListener('click', (e) => { e.stopPropagation(); langDropdown.classList.toggle('open'); });
         document.addEventListener('click', () => langDropdown.classList.remove('open'));
 
         document.querySelectorAll('.lang-option').forEach(opt => {
-            opt.addEventListener('click', () => {
-                const lang = opt.getAttribute('data-lang');
-                applyLanguage(lang);
-                langDropdown.classList.remove('open');
-            });
+            opt.addEventListener('click', () => { applyLanguage(opt.getAttribute('data-lang')); langDropdown.classList.remove('open'); });
         });
 
         // ---- init ----
@@ -1042,11 +571,53 @@
         document.querySelectorAll('a[href^="#"]').forEach(a => {
             a.addEventListener('click', e => {
                 const target = document.querySelector(a.getAttribute('href'));
-                if (target) {
-                    e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+                if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
             });
+        });
+
+        // ---- MODAL FUNCTIONS ----
+        let currentSlide = 0;
+        const totalSlides = 4;
+
+        function openSwiftServiceModal() {
+            document.getElementById('swiftServiceModal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+            currentSlide = 0; // Reset slide on open
+            updateSlide();
+        }
+
+        function closeSwiftServiceModal() {
+            document.getElementById('swiftServiceModal').classList.remove('open');
+            document.body.style.overflow = 'auto';
+        }
+
+        function changeSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = totalSlides - 1;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            updateSlide();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlide();
+        }
+
+        function updateSlide() {
+            const images = document.querySelectorAll('#swiftServiceModal .img-container img');
+            const dots = document.querySelectorAll('#swiftServiceModal .carousel-dots span');
+            
+            images.forEach((img, i) => {
+                img.classList.toggle('active', i === currentSlide);
+            });
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeSwiftServiceModal();
         });
     </script>
 

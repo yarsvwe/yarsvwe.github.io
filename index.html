@@ -3,1222 +3,716 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="darkreader" content="dark">
-    <meta name="color-scheme" content="dark light">
-    <title>SaieeSoft | Digital Utilities</title>
+    <title>nullware | next‑gen digital forge</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/png" href="saieesoft_logo.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="saieesoft_logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="saieesoft_logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="saieesoft_logo.png">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap');
+
         :root {
-            --bg-primary: #0a0f1e;
-            --bg-secondary: #111827;
-            --accent: #6366f1;
-            --accent-hover: #4f46e5;
-            --text-primary: #f1f5f9;
-            --text-secondary: #94a3b8;
-            --glass: rgba(255, 255, 255, 0.04);
-            --border: rgba(255, 255, 255, 0.08);
+            --bg: #0b0f17;
+            --surface: #131b26;
+            --card: #1a2533;
+            --border: #2b3a4b;
+            --text: #eef2f6;
+            --muted: #94a9c9;
+            --accent: #6c8cff;
+            --accent-glow: rgba(108, 140, 255, 0.25);
+            --secondary: #3ddc97;
         }
 
-        * { box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
             overflow-x: hidden;
-            font-family: 'DM Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3, h4, .font-display {
-            font-family: 'Syne', sans-serif;
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #38bdf8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        /* glassmorphism + blur */
+        .glass-panel {
+            background: rgba(19, 27, 38, 0.65);
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            border: 1px solid rgba(43, 58, 75, 0.4);
         }
 
         .glass-card {
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(26, 37, 51, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border: 1px solid var(--border);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.25s ease;
         }
 
         .glass-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(99, 102, 241, 0.3);
-            box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.2);
+            border-color: var(--accent);
+            box-shadow: 0 12px 40px -10px rgba(108, 140, 255, 0.15);
+            transform: translateY(-4px);
         }
 
-        .project-card {
-            cursor: pointer;
+        .accent-glow {
+            box-shadow: 0 0 30px -8px var(--accent-glow);
         }
 
-        .glow {
-            position: relative;
+        .btn-primary {
+            background: var(--accent);
+            color: #0b0f17;
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 60px;
+            transition: all 0.2s ease;
+            border: none;
+            letter-spacing: -0.01em;
         }
 
-        .glow::before {
-            content: '';
-            position: absolute;
-            top: -2px; left: -2px; right: -2px; bottom: -2px;
-            background: linear-gradient(45deg, #6366f1, #8b5cf6, #06b6d4);
-            border-radius: inherit;
-            opacity: 0;
-            z-index: -1;
-            transition: opacity 0.3s ease;
-            filter: blur(20px);
+        .btn-primary:hover {
+            background: #7f9bff;
+            transform: scale(1.02);
+            box-shadow: 0 8px 24px rgba(108, 140, 255, 0.35);
         }
 
-        .glow:hover::before { opacity: 0.4; }
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+            padding: 0.75rem 2rem;
+            border-radius: 60px;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            background: rgba(108, 140, 255, 0.08);
+            color: white;
+        }
 
         .nav-link {
             position: relative;
-            color: var(--text-secondary);
-            transition: color 0.3s ease;
-            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            color: var(--muted);
+            transition: color 0.2s;
         }
 
-        .nav-link:hover { color: var(--text-primary); }
+        .nav-link:hover {
+            color: white;
+        }
 
         .nav-link::after {
             content: '';
             position: absolute;
-            width: 0; height: 1px;
-            bottom: -4px; left: 0;
-            background: linear-gradient(90deg, #6366f1, #8b5cf6);
-            transition: width 0.3s ease;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.25s ease;
         }
 
-        .nav-link:hover::after { width: 100%; }
+        .nav-link:hover::after {
+            width: 100%;
+        }
 
-        .input-field {
-            background: rgba(255, 255, 255, 0.03);
+        .floating {
+            animation: floatY 7s ease-in-out infinite;
+        }
+
+        @keyframes floatY {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .hero-grid {
+            background: radial-gradient(circle at 20% 30%, #1a2b44 0%, #0b0f17 70%);
+        }
+
+        .tech-pill {
+            background: rgba(108, 140, 255, 0.08);
+            border: 1px solid rgba(108, 140, 255, 0.15);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--muted);
+            transition: 0.2s;
+        }
+
+        .tech-pill:hover {
+            background: rgba(108, 140, 255, 0.15);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .stat-block {
+            background: var(--card);
+            border-radius: 24px;
+            padding: 1.5rem 1rem;
+            text-align: center;
             border: 1px solid var(--border);
-            transition: all 0.3s ease;
-            font-family: 'DM Sans', sans-serif;
+            transition: 0.2s;
         }
 
-        .input-field:focus {
-            outline: none;
-            border-color: rgba(99, 102, 241, 0.5);
-            background: rgba(255, 255, 255, 0.05);
+        .stat-block:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
         }
 
-        .noise {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0.03;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        }
-
-        .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.12;
-            animation: float 20s infinite ease-in-out;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0); }
-            33% { transform: translate(30px, -50px); }
-            66% { transform: translate(-20px, 20px); }
-        }
-
-        .fade-up {
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 0.8s ease forwards;
-        }
-
-        @keyframes fadeUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .delay-100 { animation-delay: 0.1s; }
-        .delay-200 { animation-delay: 0.2s; }
-        .delay-300 { animation-delay: 0.3s; }
-
-        .tag {
-            background: rgba(99, 102, 241, 0.1);
-            color: #818cf8;
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            font-family: 'DM Sans', sans-serif;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            transition: all 0.3s ease;
-            font-family: 'Syne', sans-serif;
+        .project-tag {
+            background: rgba(61, 220, 151, 0.08);
+            color: var(--secondary);
+            border: 1px solid rgba(61, 220, 151, 0.15);
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
+            font-size: 0.7rem;
             font-weight: 600;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
         }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.5);
+        .input-dark {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: white;
+            border-radius: 16px;
+            padding: 0.9rem 1.2rem;
+            transition: 0.2s;
+            width: 100%;
+        }
+
+        .input-dark:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(108, 140, 255, 0.15);
         }
 
         .mobile-menu {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease;
+            transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        .mobile-menu.open { max-height: 400px; }
-
-        .lang-dropdown {
-            position: relative;
+        .mobile-menu.open {
+            max-height: 700px;
         }
 
-        .lang-dropdown-menu {
-            position: absolute;
-            top: calc(100% + 8px);
-            right: 0;
-            background: #141c2e;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 6px;
-            min-width: 140px;
+        .theme-icon-dark { display: none; }
+        .theme-icon-light { display: block; }
+        .dark .theme-icon-light { display: none; }
+        .dark .theme-icon-dark { display: block; }
+
+        /* scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 12px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+        .fade-up {
             opacity: 0;
-            pointer-events: none;
-            transform: translateY(-8px);
-            transition: all 0.2s ease;
-            z-index: 100;
-            backdrop-filter: blur(20px);
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
-        .lang-dropdown-menu.open {
+        .fade-up.visible {
             opacity: 1;
-            pointer-events: all;
             transform: translateY(0);
         }
 
-        .lang-option {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-family: 'DM Sans', sans-serif;
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            white-space: nowrap;
-        }
-
-        .lang-option:hover {
-            background: rgba(255,255,255,0.06);
-            color: var(--text-primary);
-        }
-
-        .lang-option.active {
-            background: rgba(99, 102, 241, 0.15);
-            color: #818cf8;
-        }
-
-        .lang-btn-trigger {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            background: rgba(255,255,255,0.03);
-            color: var(--text-secondary);
-            font-size: 13px;
-            font-family: 'DM Sans', sans-serif;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .lang-btn-trigger:hover {
-            background: rgba(255,255,255,0.07);
-            color: var(--text-primary);
-            border-color: rgba(255,255,255,0.15);
-        }
-
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.35s ease;
-        }
-
-        .modal-overlay.open {
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        .modal-backdrop {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-
-        .modal-content {
-            position: relative;
-            z-index: 1;
-            background: linear-gradient(145deg, #0f1a2e, #141c30);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 28px;
-            width: 100%;
-            max-width: 880px;
-            max-height: 90vh;
-            overflow-y: auto;
-            transform: scale(0.93) translateY(20px);
-            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 40px 80px -20px rgba(0,0,0,0.8), 0 0 0 1px rgba(99,102,241,0.1);
-        }
-
-        .modal-overlay.open .modal-content {
-            transform: scale(1) translateY(0);
-        }
-
-        .modal-content::-webkit-scrollbar { width: 4px; }
-        .modal-content::-webkit-scrollbar-track { background: transparent; }
-        .modal-content::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
-
-        .slider-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 16px;
-            background: rgba(0,0,0,0.3);
-            aspect-ratio: 16/10;
-        }
-
-        .slide {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            transition: opacity 0.5s ease, transform 0.5s ease;
-            transform: translateX(40px);
-        }
-
-        .slide.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .slide.prev {
-            opacity: 0;
-            transform: translateX(-40px);
-        }
-
-        .slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 16px;
-            cursor: zoom-in;
-            transition: transform 0.2s ease;
-        }
-
-        .slide img:hover {
-            transform: scale(1.02);
-        }
-
-        .slider-nav {
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-            margin-top: 14px;
-        }
-
-        .slider-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 3px;
-            background: rgba(255,255,255,0.2);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .slider-dot.active {
-            width: 22px;
-            background: #6366f1;
-        }
-
-        .slider-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 10;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: rgba(0,0,0,0.5);
-            border: 1px solid rgba(255,255,255,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            backdrop-filter: blur(8px);
-        }
-
-        .slider-arrow:hover {
-            background: rgba(99,102,241,0.4);
-            border-color: rgba(99,102,241,0.5);
-        }
-
-        .slider-arrow.left { left: 12px; }
-        .slider-arrow.right { right: 12px; }
-
-        .btn-download {
-            background: linear-gradient(135deg, #06b6d4, #6366f1);
-            font-family: 'Syne', sans-serif;
-            font-weight: 700;
-            letter-spacing: 0.01em;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-download::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .btn-download:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 30px -8px rgba(99,102,241,0.5);
-        }
-
-        .btn-download:hover::after { opacity: 1; }
-
-        .btn-support {
-            border: 1px solid rgba(255,255,255,0.12);
-            background: rgba(255,255,255,0.04);
-            font-family: 'Syne', sans-serif;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            color: var(--text-secondary);
-        }
-
-        .btn-support:hover {
-            background: rgba(255,198,0,0.1);
-            border-color: rgba(255,198,0,0.3);
-            color: #fbbf24;
-            transform: translateY(-1px);
-        }
-
-        .version-chip {
-            background: rgba(6, 182, 212, 0.12);
-            color: #67e8f9;
-            border: 1px solid rgba(6, 182, 212, 0.25);
-            font-family: 'DM Sans', sans-serif;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            z-index: 10;
-        }
-
-        .modal-close:hover {
-            background: rgba(239, 68, 68, 0.2);
-            border-color: rgba(239, 68, 68, 0.3);
-            color: #f87171;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 14px;
-            color: var(--text-secondary);
-        }
-
-        .feature-dot {
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background: #6366f1;
-            margin-top: 8px;
-            flex-shrink: 0;
-        }
-
-        /* ── Lightbox ── */
-        .lightbox {
-            position: fixed;
-            inset: 0;
-            z-index: 2000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0,0,0,0.92);
-            backdrop-filter: blur(16px);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-            padding: 20px;
-        }
-
-        .lightbox.open {
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        .lightbox img {
-            max-width: 95vw;
-            max-height: 92vh;
-            border-radius: 12px;
-            object-fit: contain;
-            box-shadow: 0 40px 80px -20px rgba(0,0,0,0.9);
-            transform: scale(0.93);
-            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .lightbox.open img {
-            transform: scale(1);
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 18px;
-            right: 18px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            color: #fff;
-            font-size: 18px;
-            transition: all 0.2s ease;
-        }
-
-        .lightbox-close:hover {
-            background: rgba(239,68,68,0.25);
-            border-color: rgba(239,68,68,0.4);
-            color: #f87171;
-        }
+        .delay-100 { transition-delay: 0.08s; }
+        .delay-200 { transition-delay: 0.16s; }
+        .delay-300 { transition-delay: 0.24s; }
     </style>
 </head>
-<body class="antialiased relative">
-    <div class="noise"></div>
-    <div class="orb w-96 h-96 bg-indigo-500 top-0 left-0"></div>
-    <div class="orb w-80 h-80 bg-purple-500 bottom-0 right-0" style="animation-delay:2s"></div>
-    <div class="orb w-64 h-64 bg-cyan-500 top-1/2 left-1/2" style="animation-delay:4s"></div>
+<body class="dark">
 
-    <header class="fixed w-full top-0 z-50 glass-card border-x-0 border-t-0">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <!-- Logo: text only, no image -->
-                <a href="#" class="flex items-center gap-2 group">
-                    <span class="text-xl font-bold tracking-tight" style="font-family:'Syne',sans-serif">Saiee<span class="gradient-text">Soft</span></span>
-                </a>
-
-                <nav class="hidden md:flex items-center gap-8">
-                    <a href="#projects" class="nav-link text-sm font-medium" data-translate="projects">Projects</a>
-                    <a href="#contact" class="nav-link text-sm font-medium" data-translate="contact">Contact</a>
-                    <div class="h-4 w-px bg-white/10"></div>
-                    <div class="lang-dropdown" id="langDropdown">
-                        <button class="lang-btn-trigger" onclick="toggleLangDropdown(event)">
-                            <i class="fa-solid fa-globe" style="font-size:13px"></i>
-                            <span id="currentLangLabel">EN</span>
-                            <i class="fa-solid fa-chevron-down" style="font-size:11px" id="langChevron"></i>
-                        </button>
-                        <div class="lang-dropdown-menu" id="langDropdownMenu">
-                            <div class="lang-option" onclick="setLanguage('en')" data-lang="en">🇬🇧 English</div>
-                            <div class="lang-option" onclick="setLanguage('de')" data-lang="de">🇩🇪 Deutsch</div>
-                            <div class="lang-option" onclick="setLanguage('pl')" data-lang="pl">🇵🇱 Polski</div>
-                            <div class="lang-option" onclick="setLanguage('ru')" data-lang="ru">🇷🇺 Русский</div>
-                            <div class="lang-option" onclick="setLanguage('ua')" data-lang="ua">🇺🇦 Українська</div>
-                        </div>
-                    </div>
-                </nav>
-
-                <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-slate-400 hover:text-white">
-                    <i class="fa-solid fa-bars w-6 h-6" id="menuIconFA"></i>
-                </button>
+    <header class="fixed w-full z-50 glass-panel border-b border-[#2b3a4b]/40">
+        <div class="container mx-auto px-6 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full bg-[#6c8cff]/20 flex items-center justify-center border border-[#6c8cff]/30">
+                    <i class="fas fa-cube text-[#6c8cff] text-lg"></i>
+                </div>
+                <span class="text-2xl font-bold tracking-tight text-white">null<span class="text-[#6c8cff]">ware</span></span>
             </div>
 
-            <div id="mobileMenu" class="mobile-menu md:hidden">
-                <div class="flex flex-col gap-4 pt-6 pb-2 border-t border-white/10 mt-4">
-                    <a href="#projects" class="text-slate-400 hover:text-white transition" data-translate="projects">Projects</a>
-                    <a href="#contact" class="text-slate-400 hover:text-white transition" data-translate="contact">Contact</a>
-                    <div class="flex flex-wrap gap-2 pt-2">
-                        <button onclick="setLanguage('en')" class="px-3 py-1.5 rounded-full border border-white/10 text-xs text-slate-400 hover:text-white hover:bg-white/5 transition" data-mobile-lang="en">🇬🇧 EN</button>
-                        <button onclick="setLanguage('pl')" class="px-3 py-1.5 rounded-full border border-white/10 text-xs text-slate-400 hover:text-white hover:bg-white/5 transition" data-mobile-lang="pl">🇵🇱 PL</button>
-                        <button onclick="setLanguage('ru')" class="px-3 py-1.5 rounded-full border border-white/10 text-xs text-slate-400 hover:text-white hover:bg-white/5 transition" data-mobile-lang="ru">🇷🇺 RU</button>
-                        <button onclick="setLanguage('ua')" class="px-3 py-1.5 rounded-full border border-white/10 text-xs text-slate-400 hover:text-white hover:bg-white/5 transition" data-mobile-lang="ua">🇺🇦 UA</button>
-                        <button onclick="setLanguage('de')" class="px-3 py-1.5 rounded-full border border-white/10 text-xs text-slate-400 hover:text-white hover:bg-white/5 transition" data-mobile-lang="de">🇩🇪 DE</button>
-                    </div>
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#" class="nav-link" data-translate="home">Home</a>
+                <a href="#apps" class="nav-link" data-translate="apps">Projects</a>
+                <a href="#about" class="nav-link" data-translate="about">Studio</a>
+                <a href="#contact" class="nav-link" data-translate="contact">Connect</a>
+                <button id="theme-toggle" class="text-[#94a9c9] hover:text-white text-lg p-2 rounded-full hover:bg-white/5 transition">
+                    <i class="fas fa-moon theme-icon-dark"></i>
+                    <i class="fas fa-sun theme-icon-light"></i>
+                </button>
+                <div class="flex gap-1">
+                    <button class="lang-btn px-3 py-1 rounded-md hover:bg-[#6c8cff]/20 text-sm font-medium transition" data-lang="en">EN</button>
+                    <button class="lang-btn px-3 py-1 rounded-md hover:bg-[#6c8cff]/20 text-sm font-medium transition" data-lang="ru">RU</button>
+                    <button class="lang-btn px-3 py-1 rounded-md hover:bg-[#6c8cff]/20 text-sm font-medium transition" data-lang="ua">UA</button>
+                    <button class="lang-btn px-3 py-1 rounded-md hover:bg-[#6c8cff]/20 text-sm font-medium transition" data-lang="es">ES</button>
+                    <button class="lang-btn px-3 py-1 rounded-md hover:bg-[#6c8cff]/20 text-sm font-medium transition" data-lang="fr">FR</button>
+                </div>
+            </nav>
+
+            <button id="mobileMenuButton" class="md:hidden text-xl p-2 hover:bg-white/5 rounded-full transition">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="mobileMenu" class="mobile-menu md:hidden px-6 pb-4 border-t border-[#2b3a4b]/30">
+            <div class="flex flex-col gap-4 pt-4">
+                <a href="#" class="nav-link" data-translate="home">Home</a>
+                <a href="#apps" class="nav-link" data-translate="apps">Projects</a>
+                <a href="#about" class="nav-link" data-translate="about">Studio</a>
+                <a href="#contact" class="nav-link" data-translate="contact">Connect</a>
+                <button id="theme-toggle-mobile" class="flex items-center gap-3 text-[#94a9c9] hover:text-white py-1">
+                    <i class="fas fa-moon theme-icon-dark w-5"></i>
+                    <i class="fas fa-sun theme-icon-light w-5"></i>
+                    <span data-translate="toggleTheme">Theme</span>
+                </button>
+                <div class="flex flex-wrap gap-2 pt-2">
+                    <button class="lang-btn px-3 py-1 rounded-md hover:bg-[#6c8cff]/20 text-sm" data-lang="en">EN</button>
+                    <button class="lang-btn px-3 py-1 rounded-md hover:bg-[#6c8cff]/20 text-sm" data-lang="ru">RU</button>
+                    <button class="lang-btn px-3 py-1 rounded-md hover:bg-[#6c8cff]/20 text-sm" data-lang="ua">UA</button>
+                    <button class="lang-btn px-3 py-1 rounded-md hover:bg-[#6c8cff]/20 text-sm" data-lang="es">ES</button>
+                    <button class="lang-btn px-3 py-1 rounded-md hover:bg-[#6c8cff]/20 text-sm" data-lang="fr">FR</button>
                 </div>
             </div>
         </div>
     </header>
 
-    <section class="pt-32 pb-20 lg:pt-48 lg:pb-32 relative overflow-hidden">
-        <div class="container mx-auto px-6 text-center relative z-10">
-            <div class="max-w-4xl mx-auto">
-                <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6 fade-up">
-                    <span data-translate="heroTitle">Crafting</span> <span class="gradient-text" data-translate="heroTitleAccent">Digital Tools</span>
-                </h1>
-                <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 fade-up delay-100" data-translate="heroSubtitle">
-                    Minimalist utilities designed for modern workflows. Clean, efficient, and meticulously crafted.
-                </p>
-                <div class="flex justify-center gap-4 fade-up delay-200">
-                    <a href="#projects" class="btn-primary px-8 py-3 rounded-full font-medium text-white flex items-center gap-2">
-                        <span data-translate="exploreProjects">Explore Projects</span>
-                        <i class="fa-solid fa-arrow-down" style="font-size:14px"></i>
-                    </a>
-                    <a href="#contact" class="px-8 py-3 rounded-full font-medium border border-white/10 hover:bg-white/5 transition text-slate-300" style="font-family:'DM Sans',sans-serif" data-translate="getInTouch">
-                        Get in Touch
-                    </a>
-                </div>
+    <!-- HERO -->
+    <section class="hero-grid pt-32 pb-24 px-6 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20" style="background: radial-gradient(circle at 70% 20%, #6c8cff30, transparent 60%)"></div>
+        <div class="container mx-auto relative z-10 text-center max-w-4xl">
+            <div class="inline-flex items-center gap-2 bg-[#6c8cff]/10 border border-[#6c8cff]/20 rounded-full px-4 py-1.5 text-sm text-[#94a9c9] mb-6">
+                <span class="w-2 h-2 rounded-full bg-[#3ddc97] animate-pulse"></span>
+                <span data-translate="badge">next‑gen digital forge</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6">
+                <span data-translate="title">Build <span class="text-[#6c8cff]">smarter</span></span><br>
+                <span data-translate="subtitle">ship faster</span>
+            </h1>
+            <p class="text-xl text-[#94a9c9] max-w-2xl mx-auto mb-10" data-translate="slogan">
+                We craft performance‑first digital tools for creators, teams, and visionaries.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#apps" class="btn-primary" data-translate="viewWorks">Explore projects</a>
+                <a href="#contact" class="btn-outline" data-translate="contact">Let's talk</a>
+            </div>
+            <div class="mt-12 flex flex-wrap justify-center gap-6 text-sm text-[#94a9c9]">
+                <span class="flex items-center gap-2"><i class="fas fa-check-circle text-[#3ddc97]"></i> <span data-translate="trust1">5+ products shipped</span></span>
+                <span class="flex items-center gap-2"><i class="fas fa-check-circle text-[#3ddc97]"></i> <span data-translate="trust2">1K+ active users</span></span>
+                <span class="flex items-center gap-2"><i class="fas fa-check-circle text-[#3ddc97]"></i> <span data-translate="trust3">99.9% uptime</span></span>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="py-20 relative">
-        <div class="container mx-auto px-6">
-            <div class="mb-16 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 fade-up" data-translate="projectsTitle">Featured <span class="gradient-text">Works</span></h2>
-                <p class="text-slate-400 max-w-xl mx-auto fade-up delay-100" data-translate="projectsSubtitle">
-                    A curated selection of utilities built with precision and attention to detail.
-                </p>
+    <!-- STATS -->
+    <section class="py-14 px-6 border-b border-[#2b3a4b]/30">
+        <div class="container mx-auto grid grid-cols-2 md:grid-cols-4 gap-5">
+            <div class="stat-block"><div class="text-3xl font-bold text-[#6c8cff]">7</div><div class="text-[#94a9c9] text-sm" data-translate="projects">projects</div></div>
+            <div class="stat-block"><div class="text-3xl font-bold text-[#6c8cff]">4.9</div><div class="text-[#94a9c9] text-sm" data-translate="clients">avg rating</div></div>
+            <div class="stat-block"><div class="text-3xl font-bold text-[#6c8cff]">3+</div><div class="text-[#94a9c9] text-sm" data-translate="years">years building</div></div>
+            <div class="stat-block"><div class="text-3xl font-bold text-[#6c8cff]">∞</div><div class="text-[#94a9c9] text-sm" data-translate="passion">curiosity</div></div>
+        </div>
+    </section>
+
+    <!-- APPS / PROJECTS -->
+    <section id="apps" class="py-24 px-6">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold tracking-tight" data-translate="appsTitle">Featured <span class="text-[#6c8cff]">projects</span></h2>
+                <p class="text-[#94a9c9] max-w-xl mx-auto mt-3" data-translate="appsSubtitle">Tools we’ve built to solve real problems, with care and code.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                <!-- SwiftService -->
-                <div class="glass-card rounded-2xl p-6 glow group fade-up project-card" onclick="openSwiftServiceModal()">
-                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-gear fa-xl text-white"></i>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Exolute -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-[#6c8cff]/10 border border-[#6c8cff]/20 flex items-center justify-center text-2xl text-[#6c8cff]">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <span class="project-tag" data-translate="popular">popular</span>
                     </div>
-                    <div class="flex items-center gap-2 mb-3">
-                        <h3 class="text-xl font-bold" style="font-family:'Syne',sans-serif">SwiftService</h3>
-                        <span class="swiftservice-version text-xs px-2 py-0.5 rounded-full version-chip"></span>
+                    <h3 class="text-2xl font-bold">Exolute Converter</h3>
+                    <p class="text-[#94a9c9] text-sm mt-2 flex-1" data-translate="exoluteDesc">Real‑time currency converter with live rates, history, and offline mode.</p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="tech-pill" data-translate="finance">finance</span>
+                        <span class="tech-pill" data-translate="realTime">real‑time</span>
+                        <span class="tech-pill">Android</span>
                     </div>
-                    <p class="text-slate-400 text-sm mb-6 leading-relaxed" data-translate="swiftserviceDesc">
-                        Advanced Windows optimization suite. System cleaning, registry maintenance, and performance tuning in one lightweight utility.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="tag text-xs px-3 py-1 rounded-full" data-translate="tagSystem">System</span>
-                        <span class="tag text-xs px-3 py-1 rounded-full" data-translate="tagWindows">Windows</span>
-                        <span class="tag text-xs px-3 py-1 rounded-full" data-translate="tagUtils">Utilities</span>
-                    </div>
-                    <div class="flex items-center justify-center gap-2 w-full py-3 rounded-lg bg-white/5 border border-white/10 text-sm font-medium text-slate-300 pointer-events-none">
-                        <i class="fa-solid fa-expand" style="font-size:14px"></i>
-                        <span data-translate="viewDetails">View Details</span>
-                    </div>
+                    <a href="https://play.google.com/store/apps/details?id=com.saieesoft.exolute&pcampaignid=web_share" target="_blank" class="btn-primary w-full mt-6 text-center">
+                        <i class="fas fa-download mr-2"></i> <span data-translate="download">Get it on Play</span>
+                    </a>
                 </div>
 
-                <!-- Exolute -->
-                <div class="glass-card rounded-2xl p-6 glow group fade-up delay-100">
-                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-arrows-left-right fa-xl text-white"></i>
+                <!-- Daily.box -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-[#3ddc97]/10 border border-[#3ddc97]/20 flex items-center justify-center text-2xl text-[#3ddc97]">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <span class="project-tag" data-translate="habits">habits</span>
                     </div>
-                    <div class="flex items-center gap-2 mb-3">
-                        <h3 class="text-xl font-bold" style="font-family:'Syne',sans-serif">Exolute Converter</h3>
-                        <span class="text-xs px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30" data-translate="popularBadge">POPULAR</span>
+                    <h3 class="text-2xl font-bold">Daily.box</h3>
+                    <p class="text-[#94a9c9] text-sm mt-2 flex-1" data-translate="dailyboxDesc">Minimal habit tracker that helps you build routines that stick.</p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="tech-pill" data-translate="productivity">productivity</span>
+                        <span class="tech-pill">beta</span>
                     </div>
-                    <p class="text-slate-400 text-sm mb-6 leading-relaxed" data-translate="exoluteDesc">
-                        Real-time currency conversion with historical analytics, offline mode support, and intuitive interface design.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="tag text-xs px-3 py-1 rounded-full" data-translate="tagFinance">Finance</span>
-                        <span class="tag text-xs px-3 py-1 rounded-full" data-translate="tagAndroid">Android</span>
-                        <span class="tag text-xs px-3 py-1 rounded-full" data-translate="tagOffline">Offline</span>
-                    </div>
-                    <a href="https://play.google.com/store/apps/details?id=com.saieesoft.exolute" target="_blank" class="flex items-center justify-center gap-2 w-full py-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 transition text-sm font-medium">
-                        <i class="fa-brands fa-google-play" style="font-size:14px"></i>
-                        <span data-translate="viewOnStore">View on Play Store</span>
+                    <a href="https://www.mediafire.com/file/nq28f0amjgl3eop/Dailybox_v1.apk/file" class="btn-primary w-full mt-6 text-center">
+                        <i class="fas fa-download mr-2"></i> <span data-translate="download">Download beta</span>
                     </a>
                 </div>
 
                 <!-- AskAnonymousBot -->
-                <div class="glass-card rounded-2xl p-6 glow group fade-up delay-200">
-                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-comment-dots fa-xl text-white"></i>
+                <div class="glass-card rounded-2xl p-6 flex flex-col">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-[#f472b6]/10 border border-[#f472b6]/20 flex items-center justify-center text-2xl text-[#f472b6]">
+                            <i class="fab fa-telegram"></i>
+                        </div>
+                        <span class="project-tag" data-translate="social">social</span>
                     </div>
-                    <div class="flex items-center gap-2 mb-3">
-                        <h3 class="text-xl font-bold" style="font-family:'Syne',sans-serif">@AskAnonymousBot</h3>
+                    <h3 class="text-2xl font-bold">@AskAnonymousBot</h3>
+                    <p class="text-[#94a9c9] text-sm mt-2 flex-1" data-translate="askAnonymousDesc">Anonymous Q&A bot for Telegram — ask anything, share freely.</p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="tech-pill" data-translate="telegram">Telegram</span>
+                        <span class="tech-pill" data-translate="privacy">privacy</span>
                     </div>
-                    <p class="text-slate-400 text-sm mb-6 leading-relaxed" data-translate="askanonymousDesc">
-                        Telegram bot for anonymous messaging. End-to-end privacy, no data storage, and seamless group integration.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="tag text-xs px-3 py-1 rounded-full" data-translate="tagSocial">Social</span>
-                        <span class="tag text-xs px-3 py-1 rounded-full" data-translate="tagPrivacy">Privacy</span>
-                        <span class="tag text-xs px-3 py-1 rounded-full">Telegram</span>
-                    </div>
-                    <a href="https://t.me/AskAnonymousBot" target="_blank" class="flex items-center justify-center gap-2 w-full py-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 transition text-sm font-medium">
-                        <i class="fa-brands fa-telegram" style="font-size:14px"></i>
-                        <span data-translate="openInTelegram">Open in Telegram</span>
+                    <a href="https://t.me/AskAnonymousBot" target="_blank" class="btn-primary w-full mt-6 text-center">
+                        <i class="fab fa-telegram mr-2"></i> <span data-translate="tryBot">Try bot</span>
                     </a>
                 </div>
             </div>
+            <div class="text-center mt-14">
+                <a href="https://saieesoft.github.io/projects.html" class="btn-outline inline-flex items-center gap-2" data-translate="viewAll">
+                    view all projects <i class="fas fa-arrow-right text-sm"></i>
+                </a>
+            </div>
         </div>
     </section>
 
-    <section id="contact" class="py-20 relative">
-        <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto">
-                <div class="glass-card rounded-3xl p-8 md:p-12 fade-up">
-                    <div class="grid md:grid-cols-2 gap-12">
-                        <div>
-                            <h2 class="text-3xl font-bold mb-4" data-translate="contactTitle">Let's <span class="gradient-text">Collaborate</span></h2>
-                            <p class="text-slate-400 mb-8" data-translate="contactSubtitle">
-                                Have a project in mind or want to discuss potential opportunities? Reach out directly.
-                            </p>
-                            <div class="space-y-4">
-                                <a href="mailto:saieesoft@duck.com" class="flex items-center gap-3 text-slate-400 hover:text-white transition group">
-                                    <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-indigo-500/20 transition">
-                                        <i class="fa-solid fa-envelope" style="font-size:16px"></i>
-                                    </div>
-                                    <span class="text-sm">saieesoft@duck.com</span>
-                                </a>
-                                <a href="https://github.com/saieesoft" target="_blank" class="flex items-center gap-3 text-slate-400 hover:text-white transition group">
-                                    <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-indigo-500/20 transition">
-                                        <i class="fa-brands fa-github" style="font-size:18px"></i>
-                                    </div>
-                                    <span class="text-sm">github.com/saieesoft</span>
-                                </a>
-                                <a href="https://play.google.com/store/apps/dev?id=6446780682856756622" target="_blank" class="flex items-center gap-3 text-slate-400 hover:text-white transition group">
-                                    <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-indigo-500/20 transition">
-                                        <i class="fa-solid fa-mobile-screen" style="font-size:16px"></i>
-                                    </div>
-                                    <span class="text-sm" data-translate="playStore">Play Store Developer</span>
-                                </a>
-                            </div>
+    <!-- ABOUT / STUDIO -->
+    <section id="about" class="py-24 px-6 border-t border-[#2b3a4b]/30">
+        <div class="container mx-auto flex flex-col lg:flex-row gap-16 items-center">
+            <div class="lg:w-1/2 relative">
+                <div class="relative rounded-3xl overflow-hidden border border-[#2b3a4b] bg-[#131b26] p-8">
+                    <div class="absolute inset-0 bg-gradient-to-br from-[#6c8cff]/10 to-transparent"></div>
+                    <i class="fas fa-cube text-8xl text-[#6c8cff]/20 absolute -bottom-6 -right-6"></i>
+                    <div class="relative z-10">
+                        <div class="w-20 h-20 rounded-full bg-[#6c8cff]/10 border border-[#6c8cff]/20 flex items-center justify-center text-3xl text-[#6c8cff] mb-6">
+                            <i class="fas fa-code"></i>
                         </div>
-                        <form action="https://formsubmit.co/saieesoft@duck.com" method="POST" class="space-y-4">
-    <input type="hidden" name="_captcha"      value="false">
-    <input type="hidden" name="_subject"      value="📩 New message from SaieeSoft website">
-    <input type="hidden" name="_autoresponse" value="Thank you for reaching out to SaieeSoft! 🙌 We have received your message and our team will get back to you as soon as possible. We appreciate your interest and patience. Best regards, SaieeSoft Team">
-    <input type="hidden" name="_template"     value="box">
-    <input type="text"   name="_honey"        style="display:none">
+                        <h3 class="text-2xl font-bold" data-translate="aboutTitle">nullware studio</h3>
+                        <p class="text-[#94a9c9] mt-3" data-translate="aboutText1">
+                            We're a tiny, independent team obsessed with quality. Every project is an opportunity to push pixels, polish interactions, and write clean, maintainable code.
+                        </p>
+                        <p class="text-[#94a9c9] mt-4" data-translate="aboutText2">
+                            From Android to the web, we focus on what matters: speed, simplicity, and a human touch.
+                        </p>
+                        <div class="mt-6 flex flex-wrap gap-2">
+                            <span class="tech-pill">Kotlin</span>
+                            <span class="tech-pill">Java</span>
+                            <span class="tech-pill">React</span>
+                            <span class="tech-pill">Node</span>
+                            <span class="tech-pill">Figma</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:w-1/2">
+                <h2 class="text-4xl font-bold tracking-tight" data-translate="aboutHeadline">crafted with <span class="text-[#6c8cff]">intent</span></h2>
+                <p class="text-[#94a9c9] text-lg mt-4" data-translate="aboutText3">
+                    We don’t just build apps — we build experiences that fit seamlessly into your workflow. No fluff, no clutter, just tools that work.
+                </p>
+                <div class="grid grid-cols-2 gap-4 mt-8">
+                    <div class="bg-[#131b26] rounded-xl p-4 border border-[#2b3a4b]"><span class="text-[#6c8cff] font-bold">3+</span> <span class="text-[#94a9c9] text-sm" data-translate="yearsExp">years active</span></div>
+                    <div class="bg-[#131b26] rounded-xl p-4 border border-[#2b3a4b]"><span class="text-[#6c8cff] font-bold">100%</span> <span class="text-[#94a9c9] text-sm" data-translate="passion">human‑crafted</span></div>
+                </div>
+                <a href="#contact" class="btn-primary inline-block mt-8" data-translate="contactMe">work with us</a>
+            </div>
+        </div>
+    </section>
 
-    <div>
-        <input
-            type="text"
-            name="name"
-            data-placeholder-translate="placeholderName"
-            placeholder="Your Name"
-            required
-            class="input-field w-full px-4 py-3 rounded-xl text-sm text-white placeholder-slate-500"
-        >
-    </div>
-    <div>
-        <input
-            type="email"
-            name="email"
-            data-placeholder-translate="placeholderEmail"
-            placeholder="Your Email"
-            required
-            class="input-field w-full px-4 py-3 rounded-xl text-sm text-white placeholder-slate-500"
-        >
-    </div>
-    <div>
-        <textarea
-            name="message"
-            data-placeholder-translate="placeholderMessage"
-            placeholder="Your Message"
-            rows="4"
-            required
-            class="input-field w-full px-4 py-3 rounded-xl text-sm text-white placeholder-slate-500 resize-none"
-        ></textarea>
-    </div>
-    <button type="submit" class="btn-primary w-full py-3 rounded-xl font-medium text-white flex items-center justify-center gap-2">
-        <span data-translate="sendMessage">Send Message</span>
-        <i class="fa-solid fa-paper-plane" style="font-size:14px"></i>
-    </button>
-</form>
+    <!-- TESTIMONIALS -->
+    <section class="py-20 px-6 border-y border-[#2b3a4b]/30">
+        <div class="container mx-auto">
+            <div class="text-center mb-14">
+                <h2 class="text-3xl md:text-4xl font-bold" data-translate="testimonials">what people <span class="text-[#6c8cff]">say</span></h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="glass-card rounded-2xl p-6"><div class="flex text-[#fbbf24] text-sm mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="text-[#94a9c9] text-sm italic" data-translate="testimonial1">"Exolute is my go‑to for travel. Accurate, fast, beautiful."</p><div class="mt-4 text-xs text-[#94a9c9]">— Alex M.</div></div>
+                <div class="glass-card rounded-2xl p-6"><div class="flex text-[#fbbf24] text-sm mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="text-[#94a9c9] text-sm italic" data-translate="testimonial2">"Daily.box changed my mornings. Simple and effective."</p><div class="mt-4 text-xs text-[#94a9c9]">— Sarah K.</div></div>
+                <div class="glass-card rounded-2xl p-6"><div class="flex text-[#fbbf24] text-sm mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><p class="text-[#94a9c9] text-sm italic" data-translate="testimonial3">"The bot is a fun way to engage my community. Love it."</p><div class="mt-4 text-xs text-[#94a9c9]">— David P.</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-24 px-6">
+        <div class="container mx-auto max-w-5xl">
+            <div class="text-center mb-14">
+                <h2 class="text-4xl font-bold" data-translate="contactTitle">let’s <span class="text-[#6c8cff]">connect</span></h2>
+                <p class="text-[#94a9c9] mt-2" data-translate="contactSub">Have a project? Idea? Just want to say hi? We're here.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-10">
+                <form id="contactForm" action="https://formsubmit.co/saieesoft@duck.com" method="POST" class="space-y-5">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://yourdomain.com/thanks.html">
+                    <div><label class="block text-sm font-medium mb-1" data-translate="yourName">Name</label><input type="text" name="name" required class="input-dark"></div>
+                    <div><label class="block text-sm font-medium mb-1">Email</label><input type="email" name="email" required class="input-dark"></div>
+                    <div><label class="block text-sm font-medium mb-1" data-translate="message">Message</label><textarea name="message" rows="4" required class="input-dark"></textarea></div>
+                    <button type="submit" class="btn-primary w-full" data-translate="sendMessage">Send message <i class="fas fa-paper-plane ml-2"></i></button>
+                </form>
+                <div class="bg-[#131b26] rounded-2xl p-8 border border-[#2b3a4b]">
+                    <h4 class="text-xl font-bold" data-translate="contactInfo">reach out</h4>
+                    <ul class="mt-6 space-y-4 text-[#94a9c9]">
+                        <li class="flex items-center gap-3"><i class="fas fa-envelope text-[#6c8cff] w-5"></i> saieesoft@duck.com</li>
+                        <li class="flex items-center gap-3"><i class="fab fa-github text-[#6c8cff] w-5"></i> github.com/saieesoft</li>
+                        <li class="flex items-center gap-3"><i class="fab fa-google-play text-[#6c8cff] w-5"></i> <span data-translate="devPage">Play Store dev</span></li>
+                    </ul>
+                    <div class="mt-8 flex gap-4">
+                        <a href="https://github.com/saieesoft" class="text-[#94a9c9] hover:text-white text-xl transition"><i class="fab fa-github"></i></a>
+                        <a href="https://play.google.com/store/apps/dev?id=6446780682856756622" class="text-[#94a9c9] hover:text-white text-xl transition"><i class="fab fa-google-play"></i></a>
+                        <a href="mailto:saieesoft@duck.com" class="text-[#94a9c9] hover:text-white text-xl transition"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-8 border-t border-white/10 mt-20">
-        <div class="container mx-auto px-6 flex justify-center items-center">
-            <p class="text-slate-500 text-sm" data-translate="copyright">© 2026 SaieeSoft. All rights reserved.</p>
+    <!-- FOOTER -->
+    <footer class="border-t border-[#2b3a4b]/30 py-10 px-6 text-center text-sm text-[#94a9c9]">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <span class="font-bold text-white">null<span class="text-[#6c8cff]">ware</span></span>
+            <span data-translate="copyright">© 2026 nullware — built with curiosity</span>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-white transition" data-translate="home">Home</a>
+                <a href="#apps" class="hover:text-white transition" data-translate="apps">Projects</a>
+                <a href="#about" class="hover:text-white transition" data-translate="about">Studio</a>
+            </div>
         </div>
     </footer>
 
-    <!-- SwiftService Modal -->
-    <div class="modal-overlay" id="swiftServiceModal">
-        <div class="modal-backdrop" onclick="closeSwiftServiceModal()"></div>
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeSwiftServiceModal()">
-                <i class="fa-solid fa-xmark" style="font-size:14px"></i>
-            </button>
-
-            <div class="p-6 md:p-8">
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="flex flex-col">
-                        <div class="slider-container" id="swiftSlider">
-                            <div class="slide active" data-index="0">
-                                <img src="screenshot1.png" alt="Screenshot 1" onclick="openLightbox(this.src)">
-                            </div>
-                            <div class="slide" data-index="1">
-                                <img src="screenshot2.png" alt="Screenshot 2" onclick="openLightbox(this.src)">
-                            </div>
-                            <div class="slide" data-index="2">
-                                <img src="screenshot3.png" alt="Screenshot 3" onclick="openLightbox(this.src)">
-                            </div>
-                            <div class="slide" data-index="3">
-                                <img src="screenshot4.png" alt="Screenshot 4" onclick="openLightbox(this.src)">
-                            </div>
-                            <button class="slider-arrow left" onclick="slideSwift(-1)">
-                                <i class="fa-solid fa-chevron-left" style="font-size:13px"></i>
-                            </button>
-                            <button class="slider-arrow right" onclick="slideSwift(1)">
-                                <i class="fa-solid fa-chevron-right" style="font-size:13px"></i>
-                            </button>
-                        </div>
-                        <div class="slider-nav" id="sliderDots">
-                            <div class="slider-dot active" onclick="goToSlide(0)"></div>
-                            <div class="slider-dot" onclick="goToSlide(1)"></div>
-                            <div class="slider-dot" onclick="goToSlide(2)"></div>
-                            <div class="slider-dot" onclick="goToSlide(3)"></div>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-col gap-5">
-                        <div>
-                            <div class="flex items-center gap-3 mb-3">
-                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
-                                    <i class="fa-solid fa-gear fa-lg text-white"></i>
-                                </div>
-                                <div>
-                                    <h2 class="text-2xl font-bold" style="font-family:'Syne',sans-serif;line-height:1.1">SwiftService <span class="gradient-text">Tool</span></h2>
-                                    <span class="swiftservice-version text-xs px-2 py-0.5 rounded-full version-chip mt-1 inline-block"></span>
-                                </div>
-                            </div>
-                            <p class="text-slate-400 text-sm leading-relaxed" data-translate="swiftserviceModalDesc">
-                                A comprehensive Windows optimization suite built for performance-focused users. Clean, repair, and tune your system with precision tools — all in one lightweight app.
-                            </p>
-                        </div>
-
-                        <div class="space-y-2.5">
-                            <div class="feature-item">
-                                <div class="feature-dot"></div>
-                                <span data-translate="feature1">System cleaning & junk removal</span>
-                            </div>
-                            <div class="feature-item">
-                                <div class="feature-dot"></div>
-                                <span data-translate="feature2">Registry maintenance & repair</span>
-                            </div>
-                            <div class="feature-item">
-                                <div class="feature-dot"></div>
-                                <span data-translate="feature3">Network & DNS tools</span>
-                            </div>
-                            <div class="feature-item">
-                                <div class="feature-dot"></div>
-                                <span data-translate="feature4">Gaming & performance tweaks</span>
-                            </div>
-                            <div class="feature-item">
-                                <div class="feature-dot"></div>
-                                <span data-translate="feature5">Privacy & security controls</span>
-                            </div>
-                            <div class="feature-item">
-                                <div class="feature-dot"></div>
-                                <span data-translate="feature6">EN / RU localization</span>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-wrap gap-2 pt-1">
-                            <span class="tag text-xs px-3 py-1 rounded-full" data-translate="tagSystem">System</span>
-                            <span class="tag text-xs px-3 py-1 rounded-full" data-translate="tagWindows">Windows</span>
-                            <span class="tag text-xs px-3 py-1 rounded-full" data-translate="tagUtils">Utilities</span>
-                        </div>
-
-                        <div class="flex flex-col gap-3 mt-auto pt-2">
-                            <a href="SwiftService_Setup.exe" download class="btn-download flex items-center justify-center gap-2.5 w-full py-3.5 rounded-xl text-white text-sm">
-                                <i class="fa-solid fa-download" style="font-size:14px"></i>
-                                <span data-translate="downloadForWin">Download for Windows</span>
-                            </a>
-                            <a href="https://www.paypal.com/paypalme/YaroslavStepura" target="_blank" class="btn-support flex items-center justify-center gap-2.5 w-full py-3 rounded-xl text-sm">
-                                <i class="fa-solid fa-heart" style="color:#fbbf24;font-size:14px"></i>
-                                <span data-translate="supportDev">Support the Developer</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-        <button class="lightbox-close" onclick="closeLightbox()">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-        <img id="lightboxImg" src="" alt="Preview">
-    </div>
-
     <script>
-        const SWIFTSERVICE_VERSION = "v1.2.1";
-
+        // ---------- TRANSLATIONS ----------
         const translations = {
             en: {
-                langLabel: "EN",
-                projects: "Projects",
-                contact: "Contact",
-                heroTitle: "Crafting",
-                heroTitleAccent: "Digital Tools",
-                heroSubtitle: "Minimalist utilities designed for modern workflows. Clean, efficient, and meticulously crafted.",
-                exploreProjects: "Explore Projects",
-                getInTouch: "Get in Touch",
-                projectsTitle: "Featured",
-                projectsSubtitle: "A curated selection of utilities built with precision and attention to detail.",
-                popularBadge: "POPULAR",
-                swiftserviceDesc: "Advanced Windows optimization suite. System cleaning, registry maintenance, and performance tuning in one lightweight utility.",
-                swiftserviceModalDesc: "A comprehensive Windows optimization suite built for performance-focused users. Clean, repair, and tune your system with precision tools — all in one lightweight app.",
-                exoluteDesc: "Real-time currency conversion with historical analytics, offline mode support, and intuitive interface design.",
-                askanonymousDesc: "Telegram bot for anonymous messaging. End-to-end privacy, no data storage, and seamless group integration.",
-                tagSystem: "System", tagWindows: "Windows", tagUtils: "Utilities",
-                tagFinance: "Finance", tagAndroid: "Android", tagOffline: "Offline",
-                tagSocial: "Social", tagPrivacy: "Privacy",
-                viewDetails: "View Details",
-                downloadForWin: "Download for Windows",
-                viewOnStore: "View on Play Store",
-                openInTelegram: "Open in Telegram",
-                contactTitle: "Let's",
-                contactSubtitle: "Have a project in mind or want to discuss potential opportunities? Reach out directly.",
-                playStore: "Play Store Developer",
-                sendMessage: "Send Message",
-                copyright: "© 2026 SaieeSoft. All rights reserved.",
-                feature1: "System cleaning & junk removal",
-                feature2: "Registry maintenance & repair",
-                feature3: "Network & DNS tools",
-                feature4: "Gaming & performance tweaks",
-                feature5: "Privacy & security controls",
-                feature6: "EN / RU localization",
-                supportDev: "Support the Developer",
-                placeholderName: "Name", placeholderEmail: "Email", placeholderMessage: "Message"
+                home: "Home", apps: "Projects", about: "Studio", contact: "Connect",
+                toggleTheme: "Theme", badge: "next‑gen digital forge",
+                title: "Build smarter", subtitle: "ship faster",
+                slogan: "We craft performance‑first digital tools for creators, teams, and visionaries.",
+                viewWorks: "Explore projects", trust1: "7+ products shipped", trust2: "1K+ active users", trust3: "99.9% uptime",
+                projects: "projects", clients: "avg rating", years: "years building", passion: "curiosity",
+                appsTitle: "Featured projects", appsSubtitle: "Tools we’ve built to solve real problems, with care and code.",
+                exoluteDesc: "Real‑time currency converter with live rates, history, and offline mode.",
+                dailyboxDesc: "Minimal habit tracker that helps you build routines that stick.",
+                askAnonymousDesc: "Anonymous Q&A bot for Telegram — ask anything, share freely.",
+                popular: "popular", finance: "finance", realTime: "real‑time", habits: "habits",
+                productivity: "productivity", social: "social", telegram: "Telegram", privacy: "privacy",
+                download: "Get it on Play", tryBot: "Try bot", viewAll: "view all projects",
+                aboutTitle: "nullware studio", aboutText1: "We're a tiny, independent team obsessed with quality. Every project is an opportunity to push pixels, polish interactions, and write clean, maintainable code.",
+                aboutText2: "From Android to the web, we focus on what matters: speed, simplicity, and a human touch.",
+                aboutHeadline: "crafted with intent", aboutText3: "We don’t just build apps — we build experiences that fit seamlessly into your workflow. No fluff, no clutter, just tools that work.",
+                yearsExp: "years active", contactMe: "work with us",
+                testimonials: "what people say",
+                testimonial1: "\"Exolute is my go‑to for travel. Accurate, fast, beautiful.\"",
+                testimonial2: "\"Daily.box changed my mornings. Simple and effective.\"",
+                testimonial3: "\"The bot is a fun way to engage my community. Love it.\"",
+                contactTitle: "let’s connect", contactSub: "Have a project? Idea? Just want to say hi? We're here.",
+                yourName: "Name", message: "Message", sendMessage: "Send message",
+                contactInfo: "reach out", devPage: "Play Store dev",
+                copyright: "© 2026 nullware — built with curiosity"
             },
             ru: {
-                langLabel: "RU",
-                projects: "Проекты", contact: "Контакт",
-                heroTitle: "Создаем", heroTitleAccent: "Цифровые Инструменты",
-                heroSubtitle: "Минималистичные утилиты для современных задач. Чистые, эффективные и тщательно продуманные.",
-                exploreProjects: "Смотреть проекты", getInTouch: "Связаться",
-                projectsTitle: "Избранные",
-                projectsSubtitle: "Подборка утилит, созданных с точностью и вниманием к деталям.",
-                popularBadge: "ПОПУЛЯРНО",
-                swiftserviceDesc: "Продвинутый набор для оптимизации Windows. Очистка системы, работа с реестром и настройка производительности в одной легкой утилите.",
-                swiftserviceModalDesc: "Комплексный набор оптимизации Windows для требовательных пользователей. Очищайте, восстанавливайте и настраивайте систему точными инструментами — всё в одном лёгком приложении.",
-                exoluteDesc: "Конвертация валют в реальном времени с исторической аналитикой, поддержкой офлайн-режима и интуитивным дизайном.",
-                askanonymousDesc: "Telegram-бот для анонимных сообщений. Приватность без компромиссов, без хранения данных и бесшовная интеграция в группы.",
-                tagSystem: "Система", tagWindows: "Windows", tagUtils: "Утилиты",
-                tagFinance: "Финансы", tagAndroid: "Android", tagOffline: "Офлайн",
-                tagSocial: "Социальное", tagPrivacy: "Приватность",
-                viewDetails: "Подробнее",
-                downloadForWin: "Скачать для Windows",
-                viewOnStore: "Смотреть в Play Store",
-                openInTelegram: "Открыть в Telegram",
-                contactTitle: "Давайте",
-                contactSubtitle: "Есть идея проекта или хотите обсудить сотрудничество? Свяжитесь напрямую.",
-                playStore: "Разработчик Play Store",
-                sendMessage: "Отправить",
-                copyright: "© 2026 SaieeSoft. Все права защищены.",
-                feature1: "Очистка системы и удаление мусора",
-                feature2: "Обслуживание и ремонт реестра",
-                feature3: "Сетевые инструменты и DNS",
-                feature4: "Оптимизация для игр и производительности",
-                feature5: "Управление конфиденциальностью и безопасностью",
-                feature6: "Локализация EN / RU",
-                supportDev: "Поддержать разработчика",
-                placeholderName: "Имя", placeholderEmail: "Email", placeholderMessage: "Сообщение"
+                home: "Главная", apps: "Проекты", about: "Студия", contact: "Контакты",
+                toggleTheme: "Тема", badge: "цифровая кузница нового поколения",
+                title: "Создавайте умнее", subtitle: "доставляйте быстрее",
+                slogan: "Мы создаём высокопроизводительные цифровые инструменты для создателей, команд и визионеров.",
+                viewWorks: "Изучить проекты", trust1: "7+ продуктов", trust2: "1000+ активных пользователей", trust3: "99.9% аптайм",
+                projects: "проектов", clients: "средний рейтинг", years: "лет опыта", passion: "любопытство",
+                appsTitle: "Избранные проекты", appsSubtitle: "Инструменты, созданные для решения реальных задач.",
+                exoluteDesc: "Конвертер валют в реальном времени с курсами, историей и офлайн-режимом.",
+                dailyboxDesc: "Минималистичный трекер привычек, который помогает внедрять полезные рутины.",
+                askAnonymousDesc: "Анонимный Q&A бот для Telegram — задавай что угодно, делись свободно.",
+                popular: "популярно", finance: "финансы", realTime: "в реальном времени", habits: "привычки",
+                productivity: "продуктивность", social: "социальное", telegram: "Telegram", privacy: "приватность",
+                download: "Скачать в Play", tryBot: "Попробовать бота", viewAll: "все проекты",
+                aboutTitle: "nullware студия", aboutText1: "Мы крошечная независимая команда, одержимая качеством. Каждый проект — это возможность улучшить пиксели, взаимодействие и чистоту кода.",
+                aboutText2: "От Android до веба — мы фокусируемся на скорости, простоте и человеческом подходе.",
+                aboutHeadline: "сделано с намерением", aboutText3: "Мы не просто создаём приложения — мы создаём опыт, который идеально вписывается в ваш рабочий процесс. Никакого мусора, только работающие инструменты.",
+                yearsExp: "лет в деле", contactMe: "сотрудничать",
+                testimonials: "что говорят люди",
+                testimonial1: "\"Exolute — мой выбор для путешествий. Точно, быстро, красиво.\"",
+                testimonial2: "\"Daily.box изменил мои утра. Просто и эффективно.\"",
+                testimonial3: "\"Бот — отличный способ общения с сообществом. Мне нравится.\"",
+                contactTitle: "давайте свяжемся", contactSub: "Есть проект? Идея? Просто поздороваться? Мы здесь.",
+                yourName: "Имя", message: "Сообщение", sendMessage: "Отправить",
+                contactInfo: "связаться", devPage: "страница разработчика",
+                copyright: "© 2026 nullware — сделано с любопытством"
             },
             ua: {
-                langLabel: "UA",
-                projects: "Проєкти", contact: "Контакт",
-                heroTitle: "Створюємо", heroTitleAccent: "Цифрові Інструменти",
-                heroSubtitle: "Мінімалістичні утиліти для сучасних задач. Чисті, ефективні та ретельно продумані.",
-                exploreProjects: "Дивитись проєкти", getInTouch: "Зв'язатись",
-                projectsTitle: "Вибрані",
-                projectsSubtitle: "Підбірка утиліт, створених з точністю та увагою до деталей.",
-                popularBadge: "ПОПУЛЯРНЕ",
-                swiftserviceDesc: "Просунутий набір для оптимізації Windows.",
-                swiftserviceModalDesc: "Комплексний набір оптимізації Windows для вимогливих користувачів.",
-                exoluteDesc: "Конвертація валют у реальному часі з історичною аналітикою, підтримкою офлайн-режиму та інтуїтивним дизайном.",
-                askanonymousDesc: "Telegram-бот для анонімних повідомлень. Приватність без компромісів.",
-                tagSystem: "Система", tagWindows: "Windows", tagUtils: "Утиліти",
-                tagFinance: "Фінанси", tagAndroid: "Android", tagOffline: "Офлайн",
-                tagSocial: "Соціальне", tagPrivacy: "Конфіденційність",
-                viewDetails: "Детальніше",
-                downloadForWin: "Завантажити для Windows",
-                viewOnStore: "Дивитись у Play Store",
-                openInTelegram: "Відкрити в Telegram",
-                contactTitle: "Давайте",
-                contactSubtitle: "Є ідея проєкту або хочете обговорити співпрацю? Зв'яжіться напряму.",
-                playStore: "Розробник Play Store",
-                sendMessage: "Надіслати",
-                copyright: "© 2026 SaieeSoft. Всі права захищені.",
-                feature1: "Очищення системи та видалення сміття",
-                feature2: "Обслуговування та відновлення реєстру",
-                feature3: "Мережеві інструменти та DNS",
-                feature4: "Оптимізація для ігор та продуктивності",
-                feature5: "Керування конфіденційністю та безпекою",
-                feature6: "Локалізація EN / RU",
-                supportDev: "Підтримати розробника",
-                placeholderName: "Ім'я", placeholderEmail: "Email", placeholderMessage: "Повідомлення"
+                home: "Головна", apps: "Проєкти", about: "Студія", contact: "Контакти",
+                toggleTheme: "Тема", badge: "цифрова кузня нового покоління",
+                title: "Будуйте розумніше", subtitle: "доставляйте швидше",
+                slogan: "Ми створюємо високопродуктивні цифрові інструменти для творців, команд і візіонерів.",
+                viewWorks: "Переглянути проєкти", trust1: "7+ продуктів", trust2: "1000+ активних користувачів", trust3: "99.9% аптайм",
+                projects: "проєктів", clients: "середній рейтинг", years: "років досвіду", passion: "допитливість",
+                appsTitle: "Вибрані проєкти", appsSubtitle: "Інструменти, створені для вирішення реальних завдань.",
+                exoluteDesc: "Конвертер валют у реальному часі з курсами, історією та офлайн-режимом.",
+                dailyboxDesc: "Мінімалістичний трекер звичок, який допомагає впроваджувати корисні рутини.",
+                askAnonymousDesc: "Анонімний Q&A бот для Telegram — запитуй що завгодно, ділися вільно.",
+                popular: "популярно", finance: "фінанси", realTime: "у реальному часі", habits: "звички",
+                productivity: "продуктивність", social: "соціальне", telegram: "Telegram", privacy: "приватність",
+                download: "Завантажити в Play", tryBot: "Спробувати бота", viewAll: "всі проєкти",
+                aboutTitle: "nullware студія", aboutText1: "Ми маленька незалежна команда, одержима якістю. Кожен проєкт — це можливість покращити пікселі, взаємодію та чистоту коду.",
+                aboutText2: "Від Android до вебу — ми фокусуємося на швидкості, простоті та людяному підході.",
+                aboutHeadline: "зроблено з наміром", aboutText3: "Ми не просто створюємо додатки — ми створюємо досвід, який ідеально вписується у ваш робочий процес. Жодного сміття, тільки робочі інструменти.",
+                yearsExp: "років у справі", contactMe: "співпрацювати",
+                testimonials: "що кажуть люди",
+                testimonial1: "\"Exolute — мій вибір для подорожей. Точно, швидко, красиво.\"",
+                testimonial2: "\"Daily.box змінив мої ранки. Просто та ефективно.\"",
+                testimonial3: "\"Бот — чудовий спосіб спілкування зі спільнотою. Мені подобається.\"",
+                contactTitle: "давайте зв'яжемося", contactSub: "Маєте проєкт? Ідею? Просто привітатися? Ми тут.",
+                yourName: "Ім'я", message: "Повідомлення", sendMessage: "Надіслати",
+                contactInfo: "зв'язатися", devPage: "сторінка розробника",
+                copyright: "© 2026 nullware — зроблено з допитливістю"
             },
-            pl: {
-                langLabel: "PL",
-                projects: "Projekty", contact: "Kontakt",
-                heroTitle: "Tworzymy", heroTitleAccent: "Cyfrowe Narzędzia",
-                heroSubtitle: "Minimalistyczne narzędzia dla nowoczesnych zadań. Czyste, wydajne i starannie dopracowane.",
-                exploreProjects: "Przeglądaj projekty", getInTouch: "Kontakt",
-                projectsTitle: "Wyróżnione",
-                projectsSubtitle: "Wyselekcjonowany zestaw narzędzi zbudowanych z precyzją i dbałością o szczegóły.",
-                popularBadge: "POPULARNE",
-                swiftserviceDesc: "Zaawansowany zestaw optymalizacji Windows.",
-                swiftserviceModalDesc: "Kompleksowy pakiet optymalizacji Windows dla wymagających użytkowników.",
-                exoluteDesc: "Konwersja walut w czasie rzeczywistym z analizą historyczną, obsługą trybu offline i intuicyjnym projektem.",
-                askanonymousDesc: "Bot Telegram do anonimowych wiadomości. Prywatność bez kompromisów.",
-                tagSystem: "System", tagWindows: "Windows", tagUtils: "Narzędzia",
-                tagFinance: "Finanse", tagAndroid: "Android", tagOffline: "Offline",
-                tagSocial: "Społeczność", tagPrivacy: "Prywatność",
-                viewDetails: "Szczegóły",
-                downloadForWin: "Pobierz dla Windows",
-                viewOnStore: "Zobacz w Play Store",
-                openInTelegram: "Otwórz w Telegramie",
-                contactTitle: "Współpracujmy",
-                contactSubtitle: "Masz pomysł na projekt lub chcesz omówić potencjalną współpracę? Skontaktuj się bezpośrednio.",
-                playStore: "Deweloper Play Store",
-                sendMessage: "Wyślij",
-                copyright: "© 2026 SaieeSoft. Wszelkie prawa zastrzeżone.",
-                feature1: "Czyszczenie systemu i usuwanie śmieci",
-                feature2: "Konserwacja i naprawa rejestru",
-                feature3: "Narzędzia sieciowe i DNS",
-                feature4: "Optymalizacja gier i wydajności",
-                feature5: "Kontrola prywatności i bezpieczeństwa",
-                feature6: "Lokalizacja EN / RU",
-                supportDev: "Wesprzyj dewelopera",
-                placeholderName: "Imię", placeholderEmail: "E-mail", placeholderMessage: "Wiadomość"
+            es: {
+                home: "Inicio", apps: "Proyectos", about: "Estudio", contact: "Conectar",
+                toggleTheme: "Tema", badge: "forja digital de nueva generación",
+                title: "Construye más inteligente", subtitle: "entrega más rápido",
+                slogan: "Creamos herramientas digitales orientadas al rendimiento para creadores, equipos y visionarios.",
+                viewWorks: "Explorar proyectos", trust1: "7+ productos", trust2: "1000+ usuarios activos", trust3: "99.9% tiempo activo",
+                projects: "proyectos", clients: "calificación media", years: "años construyendo", passion: "curiosidad",
+                appsTitle: "Proyectos destacados", appsSubtitle: "Herramientas creadas para resolver problemas reales con cuidado y código.",
+                exoluteDesc: "Conversor de divisas en tiempo real con tasas, historial y modo offline.",
+                dailyboxDesc: "Rastreador de hábitos minimalista que ayuda a establecer rutinas efectivas.",
+                askAnonymousDesc: "Bot de preguntas anónimas para Telegram — pregunta lo que quieras, comparte libremente.",
+                popular: "popular", finance: "finanzas", realTime: "tiempo real", habits: "hábitos",
+                productivity: "productividad", social: "social", telegram: "Telegram", privacy: "privacidad",
+                download: "Descargar en Play", tryBot: "Probar bot", viewAll: "ver todos",
+                aboutTitle: "estudio nullware", aboutText1: "Somos un equipo pequeño e independiente obsesionado con la calidad. Cada proyecto es una oportunidad para mejorar píxeles, interacciones y código limpio.",
+                aboutText2: "Desde Android hasta la web, nos enfocamos en velocidad, simplicidad y un toque humano.",
+                aboutHeadline: "hecho con intención", aboutText3: "No solo construimos apps, creamos experiencias que encajan perfectamente en tu flujo de trabajo. Sin excesos, solo herramientas que funcionan.",
+                yearsExp: "años activos", contactMe: "trabajar con nosotros",
+                testimonials: "lo que dice la gente",
+                testimonial1: "\"Exolute es mi opción para viajar. Preciso, rápido, hermoso.\"",
+                testimonial2: "\"Daily.box cambió mis mañanas. Simple y efectivo.\"",
+                testimonial3: "\"El bot es una forma divertida de conectar con mi comunidad. Me encanta.\"",
+                contactTitle: "conectemos", contactSub: "¿Tienes un proyecto? ¿Idea? ¿Solo saludar? Estamos aquí.",
+                yourName: "Nombre", message: "Mensaje", sendMessage: "Enviar",
+                contactInfo: "contacto", devPage: "desarrollador en Play",
+                copyright: "© 2026 nullware — hecho con curiosidad"
             },
-            de: {
-                langLabel: "DE",
-                projects: "Projekte", contact: "Kontakt",
-                heroTitle: "Wir erschaffen", heroTitleAccent: "Digitale Tools",
-                heroSubtitle: "Minimalistische Werkzeuge für moderne Arbeitsabläufe. Klar, effizient und sorgfältig gestaltet.",
-                exploreProjects: "Projekte erkunden", getInTouch: "Kontakt aufnehmen",
-                projectsTitle: "Ausgewählte",
-                projectsSubtitle: "Eine kuratierte Auswahl von Werkzeugen, die mit Präzision und Liebe zum Detail entwickelt wurden.",
-                popularBadge: "BELIEBT",
-                swiftserviceDesc: "Fortschrittliches Windows-Optimierungspaket.",
-                swiftserviceModalDesc: "Ein umfassendes Windows-Optimierungspaket für leistungsorientierte Nutzer.",
-                exoluteDesc: "Echtzeit-Währungsumrechnung mit historischer Analyse, Offline-Modus und intuitivem Design.",
-                askanonymousDesc: "Telegram-Bot für anonyme Nachrichten. Vollständige Privatsphäre, keine Datenspeicherung.",
-                tagSystem: "System", tagWindows: "Windows", tagUtils: "Tools",
-                tagFinance: "Finanzen", tagAndroid: "Android", tagOffline: "Offline",
-                tagSocial: "Sozial", tagPrivacy: "Datenschutz",
-                viewDetails: "Details ansehen",
-                downloadForWin: "Für Windows herunterladen",
-                viewOnStore: "Im Play Store ansehen",
-                openInTelegram: "In Telegram öffnen",
-                contactTitle: "Zusammenarbeiten",
-                contactSubtitle: "Haben Sie ein Projekt oder möchten Sie mögliche Kooperationen besprechen?",
-                playStore: "Play Store Entwickler",
-                sendMessage: "Nachricht senden",
-                copyright: "© 2026 SaieeSoft. Alle Rechte vorbehalten.",
-                feature1: "Systembereinigung & Entrümpelung",
-                feature2: "Registrierungspflege & -reparatur",
-                feature3: "Netzwerk- & DNS-Tools",
-                feature4: "Gaming- & Leistungs-Tweaks",
-                feature5: "Datenschutz- & Sicherheitseinstellungen",
-                feature6: "EN / RU Lokalisierung",
-                supportDev: "Entwickler unterstützen",
-                placeholderName: "Name", placeholderEmail: "E-Mail", placeholderMessage: "Nachricht"
+            fr: {
+                home: "Accueil", apps: "Projets", about: "Studio", contact: "Connecter",
+                toggleTheme: "Thème", badge: "forge numérique nouvelle génération",
+                title: "Construisez plus intelligent", subtitle: "livrez plus vite",
+                slogan: "Nous concevons des outils numériques axés sur la performance pour les créateurs, les équipes et les visionnaires.",
+                viewWorks: "Explorer les projets", trust1: "7+ produits", trust2: "1000+ utilisateurs actifs", trust3: "99.9% de disponibilité",
+                projects: "projets", clients: "note moyenne", years: "années d'expérience", passion: "curiosité",
+                appsTitle: "Projets phares", appsSubtitle: "Des outils conçus pour résoudre des problèmes concrets avec soin et code.",
+                exoluteDesc: "Convertisseur de devises en temps réel avec taux, historique et mode hors ligne.",
+                dailyboxDesc: "Suivi d'habitudes minimaliste qui aide à instaurer des routines durables.",
+                askAnonymousDesc: "Bot de questions anonymes pour Telegram — posez n'importe quoi, partagez librement.",
+                popular: "populaire", finance: "finances", realTime: "temps réel", habits: "habitudes",
+                productivity: "productivité", social: "social", telegram: "Telegram", privacy: "confidentialité",
+                download: "Télécharger sur Play", tryBot: "Essayer le bot", viewAll: "voir tous",
+                aboutTitle: "studio nullware", aboutText1: "Nous sommes une petite équipe indépendante, obsédée par la qualité. Chaque projet est une opportunité d'améliorer les pixels, les interactions et la propreté du code.",
+                aboutText2: "D'Android au web, nous nous concentrons sur la rapidité, la simplicité et une touche humaine.",
+                aboutHeadline: "fabriqué avec intention", aboutText3: "Nous ne construisons pas seulement des apps, nous créons des expériences qui s'intègrent parfaitement à votre flux de travail. Sans fioritures, juste des outils qui fonctionnent.",
+                yearsExp: "années actives", contactMe: "travailler avec nous",
+                testimonials: "ce que les gens disent",
+                testimonial1: "\"Exolute est mon choix pour voyager. Précis, rapide, magnifique.\"",
+                testimonial2: "\"Daily.box a changé mes matinées. Simple et efficace.\"",
+                testimonial3: "\"Le bot est un moyen amusant d'engager ma communauté. J'adore.\"",
+                contactTitle: "connectons‑nous", contactSub: "Vous avez un projet ? Une idée ? Juste pour dire bonjour ? Nous sommes là.",
+                yourName: "Nom", message: "Message", sendMessage: "Envoyer",
+                contactInfo: "contact", devPage: "développeur sur Play",
+                copyright: "© 2026 nullware — fait avec curiosité"
             }
         };
 
         let currentLang = 'en';
-        let currentSlide = 0;
-        const totalSlides = 4;
+        const langBtns = document.querySelectorAll('.lang-btn');
 
-        function detectLanguage() {
-            const browserLang = (navigator.language || navigator.userLanguage).split('-')[0];
-            const map = { uk: 'ua', be: 'ru', kk: 'ru', ky: 'ru' };
-            if (translations[browserLang]) return browserLang;
-            return map[browserLang] || 'en';
-        }
-
-        function setLanguage(lang) {
+        const setLanguage = (lang) => {
             currentLang = lang;
             document.documentElement.lang = lang;
-            const t = translations[lang];
-            if (!t) return;
-
             document.querySelectorAll('[data-translate]').forEach(el => {
                 const key = el.getAttribute('data-translate');
-                if (t[key] !== undefined) el.textContent = t[key];
-            });
-
-            document.querySelectorAll('[data-placeholder-translate]').forEach(el => {
-                const key = el.getAttribute('data-placeholder-translate');
-                if (t[key] !== undefined) el.placeholder = t[key];
-            });
-
-            document.getElementById('currentLangLabel').textContent = t.langLabel || lang.toUpperCase();
-
-            document.querySelectorAll('.lang-option').forEach(opt => {
-                opt.classList.toggle('active', opt.getAttribute('data-lang') === lang);
-            });
-
-            document.querySelectorAll('[data-mobile-lang]').forEach(btn => {
-                const isActive = btn.getAttribute('data-mobile-lang') === lang;
-                btn.style.borderColor = isActive ? 'rgba(99,102,241,0.5)' : '';
-                btn.style.color = isActive ? '#818cf8' : '';
-            });
-
-            updateVersionBadges();
-            localStorage.setItem('saieesoft-lang', lang);
-
-            const dropdown = document.getElementById('langDropdownMenu');
-            dropdown.classList.remove('open');
-            document.getElementById('langChevron').style.transform = 'rotate(0deg)';
-        }
-
-        function updateVersionBadges() {
-            document.querySelectorAll('.swiftservice-version').forEach(b => {
-                b.textContent = SWIFTSERVICE_VERSION;
-            });
-        }
-
-        function toggleLangDropdown(e) {
-            e.stopPropagation();
-            const menu = document.getElementById('langDropdownMenu');
-            const chevron = document.getElementById('langChevron');
-            const isOpen = menu.classList.toggle('open');
-            chevron.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
-        }
-
-        document.addEventListener('click', () => {
-            document.getElementById('langDropdownMenu').classList.remove('open');
-            document.getElementById('langChevron').style.transform = 'rotate(0deg)';
-        });
-
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            const icon = document.getElementById('menuIconFA');
-            menu.classList.toggle('open');
-            const isOpen = menu.classList.contains('open');
-            icon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
-        }
-
-        function openSwiftServiceModal() {
-            document.getElementById('swiftServiceModal').classList.add('open');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeSwiftServiceModal() {
-            document.getElementById('swiftServiceModal').classList.remove('open');
-            document.body.style.overflow = '';
-        }
-
-        // Lightbox
-        function openLightbox(src) {
-            const lb = document.getElementById('lightbox');
-            const img = document.getElementById('lightboxImg');
-            img.src = src;
-            lb.classList.add('open');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            document.getElementById('lightbox').classList.remove('open');
-            // restore scroll only if modal is also closed
-            if (!document.getElementById('swiftServiceModal').classList.contains('open')) {
-                document.body.style.overflow = '';
-            }
-        }
-
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') {
-                closeLightbox();
-                closeSwiftServiceModal();
-            }
-        });
-
-        function goToSlide(index) {
-            const slides = document.querySelectorAll('#swiftSlider .slide');
-            const dots = document.querySelectorAll('#sliderDots .slider-dot');
-
-            slides[currentSlide].classList.remove('active');
-            slides[currentSlide].classList.add('prev');
-            const prevIdx = currentSlide;
-            setTimeout(() => slides[prevIdx].classList.remove('prev'), 500);
-
-            currentSlide = (index + totalSlides) % totalSlides;
-            slides.forEach(s => s.classList.remove('active', 'prev'));
-            slides[currentSlide].classList.add('active');
-            dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
-        }
-
-        function slideSwift(dir) {
-            goToSlide(currentSlide + dir);
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('saieesoft-lang');
-            setLanguage((savedLang && translations[savedLang]) ? savedLang : detectLanguage());
-            updateVersionBadges();
-
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) entry.target.style.animationPlayState = 'running';
-                });
-            });
-            document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-        });
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    document.getElementById('mobileMenu').classList.remove('open');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
                 }
             });
+            langBtns.forEach(b => {
+                b.classList.remove('bg-[#6c8cff]/20');
+                if (b.dataset.lang === lang) b.classList.add('bg-[#6c8cff]/20');
+            });
+        };
+
+        langBtns.forEach(b => b.addEventListener('click', () => setLanguage(b.dataset.lang)));
+
+        // Theme
+        const body = document.body;
+        const themeToggles = document.querySelectorAll('#theme-toggle, #theme-toggle-mobile');
+        const applyTheme = (theme) => { theme === 'dark' ? body.classList.add('dark') : body.classList.remove('dark'); };
+        const toggleTheme = () => {
+            const newTheme = body.classList.contains('dark') ? 'light' : 'dark';
+            localStorage.setItem('nullware-theme', newTheme);
+            applyTheme(newTheme);
+        };
+        themeToggles.forEach(b => b.addEventListener('click', toggleTheme));
+        const savedTheme = localStorage.getItem('nullware-theme') || 'dark';
+        applyTheme(savedTheme);
+
+        // Mobile menu
+        document.getElementById('mobileMenuButton').addEventListener('click', () => {
+            document.getElementById('mobileMenu').classList.toggle('open');
         });
+
+        // Form
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button[type="submit"]');
+            const original = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> sending...';
+            btn.disabled = true;
+            fetch(this.action, { method: 'POST', body: new FormData(this), headers: { 'Accept': 'application/json' } })
+                .then(r => r.ok ? Promise.resolve() : Promise.reject())
+                .then(() => { const m = document.createElement('div'); m.className = 'mt-4 p-4 bg-[#3ddc97]/10 border border-[#3ddc97]/30 text-[#3ddc97] rounded-xl'; m.innerHTML = '<i class="fas fa-check-circle mr-2"></i> Message sent!'; this.appendChild(m); this.reset(); setTimeout(() => m.remove(), 5000); })
+                .catch(() => { const m = document.createElement('div'); m.className = 'mt-4 p-4 bg-red-900/20 border border-red-500/30 text-red-300 rounded-xl'; m.innerHTML = '<i class="fas fa-exclamation-circle mr-2"></i> Error. Please try again.'; this.appendChild(m); setTimeout(() => m.remove(), 5000); })
+                .finally(() => { btn.innerHTML = original; btn.disabled = false; });
+        });
+
+        // Smooth scroll & fade
+        document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) { document.getElementById('mobileMenu').classList.remove('open'); target.scrollIntoView({ behavior: 'smooth' }); }
+        }));
+
+        // Intersection observer for fade-up
+        const faders = document.querySelectorAll('.fade-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.15 });
+        faders.forEach(el => observer.observe(el));
+
+        // set default lang
+        setLanguage('en');
     </script>
 </body>
 </html>

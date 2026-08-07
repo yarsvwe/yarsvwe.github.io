@@ -1,10 +1,10 @@
 <div align="center">
 
-# ✨ nullware
+# nullware
 
 **This repository hosts our website via GitHub Pages.**
 
-[![Website](https://img.shields.io/badge/🌐_Visit-Website-6C63FF?style=for-the-badge)](https://nullware.github.io)
+[![Website](https://img.shields.io/badge/🌐_Visit-Website-6C63FF?style=for-the-badge)](https://nullwarelabs.github.io)
 [![Contact](https://img.shields.io/badge/✉️_Contact-nullwarelabs@duck.com-orange?style=for-the-badge)](mailto:nullwarelabs@duck.com)
 
 </div>
@@ -13,7 +13,7 @@
 
 ## 🌐 Website
 
-👉 **[Click here to visit our website](https://nullware.github.io)**
+👉 **[Click here to visit our website](https://nullwarelabs.github.io)**
 
 ---
 
